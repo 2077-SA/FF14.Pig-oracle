@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FF14 · 猪猪运势转盘 · 狩猎版</title>
+<title>FF14猪猪运势转盘狩猎版</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', 'Helvetica', system-ui, sans-serif; }
   body { min-height: 100vh; background-color: #0f0f0f; color: #fff; line-height: 1.6; }
@@ -574,33 +574,33 @@
   // ==================== S怪数据（每行最后一个才是S怪） ====================
   const sData = {
     '7.0 S怪': [
-      { name:'厌忌之人 奇里格', zone:'奥阔帕恰山', desc:'地图抽选触发', ss: { name:'水晶化身之王', rate: 45 } },
-      { name:'伊努索奇', zone:'克扎玛乌卡湿地', desc:'地图抽选触发', ss: { name:'水晶化身之王', rate: 42 } },
-      { name:'内尤佐缇', zone:'亚克特尔树海', desc:'踩点/刷怪触发', ss: { name:'水晶化身之王', rate: 40 } },
-      { name:'山谢亚', zone:'夏劳尼荒野', desc:'踩点触发', ss: { name:'水晶化身之王', rate: 38 } },
-      { name:'先驱勇士 阿提卡斯', zone:'遗产之地', desc:'制作HQ犎牛牛排（烹调师99级）', ss: { name:'水晶化身之王', rate: 35 } },
-      { name:'天气预报机器人', zone:'活着的记忆', desc:'刷怪抽选触发', ss: { name:'水晶化身之王', rate: 32 } },
+      { name:'厌忌之人 奇里格', zone:'奥阔帕恰山', desc:'地图站岗触发', ss: { name:'水晶化身之王', rate: 45 } },
+      { name:'伊努索奇', zone:'克扎玛乌卡湿地', desc:'地图站岗触发', ss: { name:'水晶化身之王', rate: 42 } },
+      { name:'内尤佐缇', zone:'亚克特尔树海', desc:'扔鱼粉随机触发', ss: { name:'水晶化身之王', rate: 40 } },
+      { name:'山谢亚', zone:'夏劳尼荒野', desc:'化身Fate大人触发', ss: { name:'水晶化身之王', rate: 38 } },
+      { name:'先驱勇士 阿提卡斯', zone:'遗产之地', desc:'制作HQ犎牛牛排', ss: { name:'水晶化身之王', rate: 35 } },
+      { name:'天气预报机器人', zone:'活着的记忆', desc:'青魔大人！', ss: { name:'水晶化身之王', rate: 32 } },
     ],
     '6.0 S怪': [
-      { name:'布弗鲁', zone:'迷津', desc:'单人挂机踩点', ss: { name:'克尔', rate: 48 } },
-      { name:'颇胝迦', zone:'萨维奈岛', desc:'刷怪抽选', ss: { name:'克尔', rate: 45 } },
-      { name:'阿姆斯特朗', zone:'加雷马', desc:'刷怪/抽选触发', ss: { name:'克尔', rate: 42 } },
-      { name:'沉思之物', zone:'叹息海', desc:'刷怪抽选', ss: { name:'克尔', rate: 40 } },
-      { name:'俄非翁尼厄斯', zone:'厄尔庇斯', desc:'地图抽选触发', ss: { name:'克尔', rate: 38 } },
-      { name:'狭缝', zone:'天外天垓', desc:'召唤10个宠物小异亚后多人踩点', ss: { name:'克尔', rate: 35 } },
+      { name:'布弗鲁', zone:'迷津', desc:'召唤小巨魔站岗吧！', ss: { name:'克尔', rate: 48 } },
+      { name:'颇胝迦', zone:'萨维奈岛', desc:'请300只小怪去家里喝一杯', ss: { name:'克尔', rate: 45 } },
+      { name:'阿姆斯特朗', zone:'加雷马', desc:'难道要牺牲自己吗？', ss: { name:'克尔', rate: 42 } },
+      { name:'沉思之物', zone:'叹息海', desc:'请300只小怪去家里喝一杯？我还要去月球？？', ss: { name:'克尔', rate: 40 } },
+      { name:'俄非翁尼厄斯', zone:'厄尔庇斯', desc:'鸟蛋太多了，哎！', ss: { name:'克尔', rate: 38 } },
+      { name:'狭缝', zone:'天外天垓', desc:'召唤10个宠物小异亚后，新鲜大芒果？', ss: { name:'克尔', rate: 35 } },
     ],
     '5.0 S怪': [
-      { name:'戾虫', zone:'雷克兰德', desc:'地图抽选触发', ss: { name:'得到宽恕的叛乱', rate: 50 } },
-      { name:'得到宽恕的炫学', zone:'珂露西亚岛', desc:'地图抽选触发', ss: { name:'得到宽恕的叛乱', rate: 48 } },
-      { name:'多智兽', zone:'安穆·艾兰', desc:'刷怪触发', ss: { name:'得到宽恕的叛乱', rate: 45 } },
-      { name:'阿格拉俄珀', zone:'伊尔美格', desc:'踩点触发', ss: { name:'得到宽恕的叛乱', rate: 42 } },
-      { name:'伊休妲', zone:'拉凯提卡大森林', desc:'踩点触发', ss: { name:'得到宽恕的叛乱', rate: 40 } },
-      { name:'顾尼图', zone:'黑风海', desc:'刷怪触发', ss: { name:'得到宽恕的叛乱', rate: 38 } },
+      { name:'戾虫', zone:'雷克兰德', desc:'鸡肉来吧！这美味的鸡胸肉！', ss: { name:'得到宽恕的叛乱', rate: 50 } },
+      { name:'得到宽恕的炫学', zone:'珂露西亚岛', desc:'棉花用来做些什么呢？', ss: { name:'得到宽恕的叛乱', rate: 48 } },
+      { name:'多智兽', zone:'安穆·艾兰', desc:'哎，少爷别睡了', ss: { name:'得到宽恕的叛乱', rate: 45 } },
+      { name:'阿格拉俄珀', zone:'伊尔美格', desc:'孔雀！你难道不喜欢站岗吗？', ss: { name:'得到宽恕的叛乱', rate: 42 } },
+      { name:'伊休妲', zone:'拉凯提卡大森林', desc:'请300只小怪去家里喝一杯？', ss: { name:'得到宽恕的叛乱', rate: 40 } },
+      { name:'顾尼图', zone:'黑风海', desc:'天使，开饭了！', ss: { name:'得到宽恕的叛乱', rate: 38 } },
     ],
     'SS怪（概率触发）': [
-      { name:'水晶化身之王', zone:'7.0 全境', desc:'S怪触发时额外概率出现，独立判定，全看脸', ss: { name:'—', rate: 0 }, isSS: true },
-      { name:'克尔', zone:'6.0 全境', desc:'S怪触发时额外概率出现，独立判定，全看脸', ss: { name:'—', rate: 0 }, isSS: true },
-      { name:'得到宽恕的叛乱', zone:'5.0 全境', desc:'S怪触发时额外概率出现，独立判定，全看脸', ss: { name:'—', rate: 0 }, isSS: true },
+      { name:'水晶化身之王', zone:'7.0 全境', desc:'S怪触发时额外概率出现，全看脸', ss: { name:'—', rate: 0 }, isSS: true },
+      { name:'克尔', zone:'6.0 全境', desc:'S怪触发时额外概率出现，全看脸', ss: { name:'—', rate: 0 }, isSS: true },
+      { name:'得到宽恕的叛乱', zone:'5.0 全境', desc:'S怪触发时额外概率出现，全看脸', ss: { name:'—', rate: 0 }, isSS: true },
     ]
   };
 
@@ -694,10 +694,10 @@
     });
 
     const trains = [
-      { region: '陆行鸟', server: '宇宙和音', time: '20:00 ~ 22:00', speed: '极快' },
-      { region: '陆行鸟', server: '萌芽池', time: '19:30 ~ 21:30', speed: '较快' },
-      { region: '莫古力', server: '白银乡', time: '20:30 ~ 22:30', speed: '适中' },
-      { region: '莫古力', server: '拂晓之间', time: '21:00 ~ 23:00', speed: '较慢' },
+      { region: '陆行鸟', server: '宇宙和音', time: '20:00 ~ 22:00', speed: '较慢' },
+      { region: '陆行鸟', server: '萌芽池', time: '19:30 ~ 21:30', speed: '快吗？' },
+      { region: '莫古力', server: '白银乡', time: '20:30 ~ 22:30', speed: '有车吗？' },
+      { region: '莫古力', server: '拂晓之间', time: '21:00 ~ 23:00', speed: '哎' },
       { region: '猫小胖', server: '摩杜纳', time: '19:00 ~ 21:00', speed: '极快' },
       { region: '猫小胖', server: '海猫茶屋', time: '20:00 ~ 22:00', speed: '适中' },
       { region: '豆豆柴', server: '伊修加德', time: '21:00 ~ 23:00', speed: '较快' },
@@ -800,7 +800,7 @@
     { id: 'gold', name: '金猪', emoji: '🐽', color: '#ffcc66', odds: 4.5 },
   ];
 
-  let raceBank = 1000;
+  let raceBank = 2000;
   let raceInProgress = false;
 
   function renderRaceTrack() {
@@ -1141,6 +1141,200 @@
     }
   });
 
+(function() {
+  // ==================== 7.0 鱼王数据 ====================
+  const fishData = [
+    { name: '蜜渍金鱼', zone: '奥阔帕恰山', weather: ['晴朗', '阴云'], timeStart: 0, timeEnd: 24, bait: '蜂蜜虫', diff: '★★☆☆☆' },
+    { name: '苏提娜', zone: '奥阔帕恰山', weather: ['小雨', '暴雨'], timeStart: 6, timeEnd: 18, bait: '蜜渍金鱼', diff: '★★★☆☆' },
+    { name: '奥阔帕恰鲑', zone: '奥阔帕恰山', weather: ['打雷'], timeStart: 12, timeEnd: 18, bait: '蜜渍金鱼', diff: '★★★★☆' },
+    { name: '温湿巨鲤', zone: '克扎玛乌卡湿地', weather: ['小雨', '暴雨'], timeStart: 0, timeEnd: 24, bait: '沼泽虾', diff: '★★☆☆☆' },
+    { name: '沼泽幽魂', zone: '克扎玛乌卡湿地', weather: ['雾', '阴云'], timeStart: 18, timeEnd: 24, bait: '温湿巨鲤', diff: '★★★★☆' },
+    { name: '树叶拟态鱼', zone: '亚克特尔树海', weather: ['晴朗', '阴云'], timeStart: 6, timeEnd: 18, bait: '树海虫', diff: '★★☆☆☆' },
+    { name: '幻森巨龙', zone: '亚克特尔树海', weather: ['打雷', '暴雨'], timeStart: 0, timeEnd: 24, bait: '树叶拟态鱼', diff: '★★★★★' },
+    { name: '沙海巨鲶', zone: '夏劳尼荒野', weather: ['晴朗', '大风'], timeStart: 9, timeEnd: 18, bait: '沙虫', diff: '★★★☆☆' },
+    { name: '热砂王者', zone: '夏劳尼荒野', weather: ['大风'], timeStart: 12, timeEnd: 18, bait: '沙海巨鲶', diff: '★★★★★' },
+    { name: '遗产鲟鱼', zone: '遗产之地', weather: ['阴云', '小雨'], timeStart: 6, timeEnd: 12, bait: '遗产虾', diff: '★★☆☆☆' },
+    { name: '雷转质巨兽', zone: '遗产之地', weather: ['打雷'], timeStart: 0, timeEnd: 24, bait: '遗产鲟鱼', diff: '★★★★☆' },
+    { name: '记忆鳍鱼', zone: '活着的记忆', weather: ['晴朗', '阴云'], timeStart: 0, timeEnd: 24, bait: '记忆虫', diff: '★★☆☆☆' },
+    { name: '遗忘之主', zone: '活着的记忆', weather: ['雾', '阴云'], timeStart: 18, timeEnd: 24, bait: '记忆鳍鱼', diff: '★★★★★' },
+  ];
+
+  let caughtFish = JSON.parse(localStorage.getItem('ff14_caught_fish') || '[]');
+  function saveCaughtFish() { localStorage.setItem('ff14_caught_fish', JSON.stringify(caughtFish)); }
+
+  // 全局状态
+  let simStep = 'idle';        // idle | casting | biting | done
+  let simSuccessRate = 0;
+  let simCurrentFish = null;
+  let biteTimer = null;
+  let missTimer = null;
+
+  function renderFishGrid() {
+    const grid = document.getElementById('fishGrid');
+    grid.innerHTML = fishData.map((f, i) => {
+      const isCaught = caughtFish.includes(f.name);
+      return `<div class="fish-card ${isCaught ? 'caught' : ''}">
+        ${isCaught ? '<div class="fish-caught-badge">✓ 已钓到</div>' : ''}
+        <div class="fish-name">🐟 ${f.name}</div>
+        <div class="fish-zone">📍 ${f.zone}</div>
+        <div class="fish-meta">
+          <span class="weather">🌤️ ${f.weather.join('/')}</span>
+          <span class="time">🕐 ${f.timeStart}:00~${f.timeEnd}:00</span>
+          <span class="bait">🪱 ${f.bait}</span>
+        </div>
+        <div class="fish-diff">难度：${f.diff}</div>
+        <div class="fish-actions">
+          <button class="cast-btn" data-idx="${i}">🎣 抛竿</button>
+          <button class="toggle-btn" data-idx="${i}">${isCaught ? '取消标记' : '标记已钓'}</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    grid.querySelectorAll('.cast-btn').forEach(btn => {
+      btn.addEventListener('click', () => startFishSim(parseInt(btn.dataset.idx)));
+    });
+    grid.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.idx);
+        const name = fishData[idx].name;
+        if (caughtFish.includes(name)) caughtFish = caughtFish.filter(n => n !== name);
+        else caughtFish.push(name);
+        saveCaughtFish();
+        renderFishGrid();
+      });
+    });
+
+    document.getElementById('fishCaught').textContent = caughtFish.length;
+    document.getElementById('fishTotal').textContent = fishData.length;
+    const pct = fishData.length ? (caughtFish.length / fishData.length * 100) : 0;
+    document.getElementById('fishProgressFill').style.width = pct + '%';
+  }
+  renderFishGrid();
+
+  // ==================== 钓鱼主逻辑 ====================
+  function startFishSim(idx) {
+    // 清理之前的计时器
+    if (biteTimer) clearTimeout(biteTimer);
+    if (missTimer) clearTimeout(missTimer);
+
+    simCurrentFish = fishData[idx];
+    simStep = 'casting';
+
+    const weather = document.getElementById('simWeather').value;
+    const timeHour = parseInt(document.getElementById('simTime').value);
+    const weatherOk = simCurrentFish.weather.includes(weather);
+    const timeOk = timeHour >= simCurrentFish.timeStart && timeHour < simCurrentFish.timeEnd;
+    const matchCount = (weatherOk ? 1 : 0) + (timeOk ? 1 : 0);
+
+    if (matchCount === 2) simSuccessRate = 0.75;
+    else if (matchCount === 1) simSuccessRate = 0.25;
+    else simSuccessRate = 0.05;
+
+    // 弹窗显示
+    document.getElementById('fishSimOverlay').classList.add('active');
+    document.getElementById('simFishName').textContent = `🎣 目标：${simCurrentFish.name}`;
+    document.getElementById('simBobber').textContent = '🎣';
+    document.getElementById('simBobber').className = 'sim-bobber';
+    document.getElementById('simResult').textContent = '';
+    document.getElementById('simResult').className = 'sim-result';
+    document.getElementById('simBtn').disabled = false;
+    document.getElementById('simBtn').textContent = '⏳ 等待咬钩...';
+
+    let hint = `📍 ${simCurrentFish.zone} · 需要天气 ${simCurrentFish.weather.join('/')} · 需要时间 ${simCurrentFish.timeStart}:00~${simCurrentFish.timeEnd}:00`;
+    if (weatherOk && timeOk) hint += '<br>✅ 天气和时间都对！成功率很高～';
+    else if (weatherOk) hint += '<br>⚠️ 天气对了，但时间不对……';
+    else if (timeOk) hint += '<br>⚠️ 时间对了，但天气不对……';
+    else hint += '<br>❌ 天气和时间都不对，全靠脸了！';
+    document.getElementById('simHint').innerHTML = hint;
+
+    // 1.5秒后咬钩
+    biteTimer = setTimeout(() => {
+      if (simStep !== 'casting') return;
+      simStep = 'biting';
+      document.getElementById('simBobber').textContent = '❗';
+      document.getElementById('simBobber').className = 'sim-bobber bite';
+      document.getElementById('simBtn').disabled = false;
+      document.getElementById('simBtn').textContent = '🎣 提竿！';
+      document.getElementById('simHint').innerHTML = '❗ 咬钩了！快点提竿！<br>（3秒内不点会跑掉）';
+
+      // 3秒内不提竿 = 跑掉
+      missTimer = setTimeout(() => {
+        if (simStep !== 'biting') return;
+        simStep = 'done';
+        document.getElementById('simBobber').className = 'sim-bobber';
+        document.getElementById('simBobber').textContent = '💨';
+        document.getElementById('simResult').textContent = '💨 鱼跑掉了…… 手速太慢啦！';
+        document.getElementById('simResult').className = 'sim-result lose';
+        document.getElementById('simBtn').textContent = '关闭';
+      }, 3000);
+    }, 1500);
+  }
+
+  // 提竿按钮 —— 统一绑定一次，根据 simStep 判断
+  document.getElementById('simBtn').addEventListener('click', () => {
+    if (simStep === 'casting') {
+      // 提前提竿 = 失败
+      if (biteTimer) clearTimeout(biteTimer);
+      if (missTimer) clearTimeout(missTimer);
+      simStep = 'done';
+      document.getElementById('simBobber').className = 'sim-bobber';
+      document.getElementById('simBobber').textContent = '❌';
+      document.getElementById('simResult').textContent = '❌ 提前提竿了！鱼还没咬钩呢……';
+      document.getElementById('simResult').className = 'sim-result lose';
+      document.getElementById('simBtn').textContent = '关闭';
+    } else if (simStep === 'biting') {
+      // 正确提竿 = 判定
+      if (missTimer) clearTimeout(missTimer);
+      simStep = 'done';
+      document.getElementById('simBobber').className = 'sim-bobber';
+      const roll = Math.random();
+      if (roll < simSuccessRate) {
+        document.getElementById('simBobber').textContent = '🐟';
+        document.getElementById('simResult').textContent = `🎉 成功钓到【${simCurrentFish.name}】！`;
+        document.getElementById('simResult').className = 'sim-result win';
+        if (!caughtFish.includes(simCurrentFish.name)) {
+          caughtFish.push(simCurrentFish.name);
+          saveCaughtFish();
+          renderFishGrid();
+        }
+      } else {
+        document.getElementById('simBobber').textContent = '💔';
+        document.getElementById('simResult').textContent = `💔 脱钩了…… 【${simCurrentFish.name}】跑掉了（成功率约 ${(simSuccessRate*100).toFixed(0)}%）`;
+        document.getElementById('simResult').className = 'sim-result lose';
+      }
+      document.getElementById('simBtn').textContent = '关闭';
+    } else if (simStep === 'done') {
+      // 关闭弹窗
+      closeFishSim();
+    }
+  });
+
+  function closeFishSim() {
+    if (biteTimer) clearTimeout(biteTimer);
+    if (missTimer) clearTimeout(missTimer);
+    document.getElementById('fishSimOverlay').classList.remove('active');
+    simStep = 'idle';
+    simCurrentFish = null;
+  }
+
+  document.getElementById('simClose').addEventListener('click', closeFishSim);
+
+  document.getElementById('simWeather').addEventListener('change', updateSimStatus);
+  document.getElementById('simTime').addEventListener('change', updateSimStatus);
+  function updateSimStatus() {
+    const w = document.getElementById('simWeather').value;
+    const t = document.getElementById('simTime').selectedOptions[0].text;
+    document.getElementById('simStatus').textContent = `✓ ${w} · ${t}`;
+  }
+  updateSimStatus();
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.getElementById('fishSimOverlay').classList.contains('active')) {
+      closeFishSim();
+    }
+  });
+
+})();
 })();
 </script>
 </body>
