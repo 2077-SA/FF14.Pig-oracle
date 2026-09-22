@@ -68,12 +68,13 @@
   .s-item:hover{border-color:#ff9000;transform:translateY(-2px)}
   .s-item.is-selected{border-color:#fc0;background:#2a2418}
   .s-item.is-cooling{opacity:.72}
-  .s-item .s-name{font-weight:700;color:#c8f;font-size:.88rem}
+  .s-item .s-name{font-weight:700;color:#c8f;font-size:.88rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .s-item .s-desc{font-size:.72rem;color:#999;margin-top:3px;line-height:1.4}
   .s-item .s-stat-line{font-size:.68rem;color:#888;margin-top:5px;display:flex;gap:8px;flex-wrap:wrap}
   .s-item .s-stat-line .ok{color:#6cf06c}
   .s-item .s-stat-line .cool{color:#f66}
   .s-item .s-stat-line .vco{color:#c66}
+  .ss-cool-tag{font-size:.62rem;color:#f66;background:#2a1616;border:1px solid #5a2a2a;padding:1px 7px;border-radius:8px;font-weight:600;white-space:nowrap}
   .s-item.is-ss{border-color:#5a4a1a;background:#2a2418}
   .s-item.is-ss .s-name{color:#fc0}
   .s-item.is-ss:hover{border-color:#fc0}
@@ -770,7 +771,7 @@
   wheel.style.transform=`rotate(${currentRotation}deg)`;
   requestAnimationFrame(()=>{requestAnimationFrame(()=>{wheel.style.transition='';});});
 
-  /* ========== S怪数据（含 SS怪） ========== */
+  /* ========== S怪数据（4.0 无 SS） ========== */
   const sData={
     '7.0 S怪':[
       {name:'厌忌之人 奇里格',zone:'奥阔帕恰山',desc:'地图站岗触发',ssName:'水晶化身之王'},
@@ -797,18 +798,17 @@
       {name:'顾尼图',zone:'黑风海',desc:'天使，开饭了！',ssName:'得到宽恕的叛乱'}
     ],
     '4.0 S怪':[
-      {name:'优昙婆罗花',zone:'基拉巴尼亚边区',desc:'在边区持续讨伐魔物后触发',ssName:'触发运势'},
-      {name:'爬骨怪龙',zone:'基拉巴尼亚山区',desc:'在山区持续击杀魔物后触发',ssName:'触发运势'},
-      {name:'盐和光',zone:'基拉巴尼亚湖区',desc:'在湖区盐田附近站岗触发',ssName:'触发运势'},
-      {name:'巨大鳐',zone:'红玉海',desc:'在红玉海沿岸区域持续站岗触发',ssName:'触发运势'},
-      {name:'伽马',zone:'延夏',desc:'在延夏与魔物交战后触发',ssName:'触发运势'},
-      {name:'兀鲁忽乃朝鲁',zone:'太阳神草原',desc:'在太阳神草原击杀游牧魔物后触发',ssName:'触发运势'}
+      {name:'优昙婆罗花',zone:'基拉巴尼亚边区',desc:'在边区持续讨伐魔物后触发'},
+      {name:'爬骨怪龙',zone:'基拉巴尼亚山区',desc:'在山区持续击杀魔物后触发'},
+      {name:'盐和光',zone:'基拉巴尼亚湖区',desc:'在湖区盐田附近站岗触发'},
+      {name:'巨大鳐',zone:'红玉海',desc:'在红玉海沿岸区域持续站岗触发'},
+      {name:'伽马',zone:'延夏',desc:'在延夏与魔物交战后触发'},
+      {name:'兀鲁忽乃朝鲁',zone:'太阳神草原',desc:'在太阳神草原击杀游牧魔物后触发'}
     ],
     'SS怪（概率触发）':[
       {name:'水晶化身之王',zone:'7.0 全境',desc:'7.0 S怪触发时额外概率出现的隐藏Boss，纯看脸',isSS:true},
       {name:'克尔',zone:'6.0 全境',desc:'6.0 S怪触发时额外概率出现的隐藏Boss，纯看脸',isSS:true},
-      {name:'得到宽恕的叛乱',zone:'5.0 全境',desc:'5.0 S怪触发时额外概率出现的隐藏Boss，纯看脸',isSS:true},
-      {name:'触发运势',zone:'4.0 全境',desc:'4.0 S怪触发时额外概率出现的隐藏Boss，纯看脸',isSS:true}
+      {name:'得到宽恕的叛乱',zone:'5.0 全境',desc:'5.0 S怪触发时额外概率出现的隐藏Boss，纯看脸',isSS:true}
     ]
   };
 
@@ -910,15 +910,15 @@
   }
 
   /* ========== 触发系统 ========== */
-  const STORAGE_KEY = 'piggy-s-trigger-v8';
-  const VERSION_KEY = 'piggy-s-version-v8';
-  const CLICK_KEY = 'piggy-s-clicks-v8';
-  const STATS_KEY = 'piggy-s-stats-v8';
+  const STORAGE_KEY = 'piggy-s-trigger-v9';
+  const VERSION_KEY = 'piggy-s-version-v9';
+  const CLICK_KEY = 'piggy-s-clicks-v9';
+  const STATS_KEY = 'piggy-s-stats-v9';
 
   const PROGRESS_DURATION = 60 * 60 * 1000;
-  const S_COOLDOWN_MS = 30 * 60 * 1000;
-  const SS_COOLDOWN_MS = 60 * 60 * 1000;
-  const VERSION_COOLDOWN_MS = 90 * 60 * 1000;
+  const S_COOLDOWN_MS = 20 * 60 * 1000;
+  const SS_COOLDOWN_MS = 50 * 60 * 1000;
+  const VERSION_COOLDOWN_MS = 86 * 60 * 1000;
   const CLICK_WINDOW_MS = 60 * 1000;
   const CLICK_LIMIT = 10;
   const PENALTY_FREE_CLICKS = 2;
@@ -1159,14 +1159,19 @@
         <span>触发 <strong style="color:#6cf06c;">${stat.triggers}</strong></span>`;
       if(versionCooling) statLine += `<span class="vco">❄ 版本冷却 ${formatCooldown(vState.cooldownUntil-now)}</span>`;
       else if(sCool) statLine += `<span class="cool">❄ S冷却 ${formatCooldown(s.cooldownUntil-now)}</span>`;
-      else if(ssCool) statLine += `<span class="cool">👑 SS冷却 ${formatCooldown(s.ssCooldownUntil-now)}</span>`;
       if(s.triggeredThisRound) statLine += `<span class="ok">✓ 本轮已触</span>`;
       statLine += `</div>`;
+
+      // SS 冷却标签放在名字旁
+      let ssCoolTag = '';
+      if(item.ssName && ssCool){
+        ssCoolTag = `<span class="ss-cool-tag">👑 SS冷却 ${formatCooldown(s.ssCooldownUntil-now)}</span>`;
+      }
 
       const coolClass = (versionCooling || sCool) ? 'is-cooling' : '';
       const selClass = (currentDetailTab===currentSTab && currentDetailIdx===i) ? 'is-selected' : '';
       return `<div class="s-item ${coolClass} ${selClass}" data-idx="${i}">
-        <div class="s-name">${item.name}</div>
+        <div class="s-name">${item.name}${ssCoolTag}</div>
         <div class="s-desc">${item.zone} · ${item.desc}</div>
         ${ssLine}${statLine}
       </div>`;
@@ -1214,6 +1219,8 @@
     // 普通 S 怪
     const stat = stats[item.name] || { attempts:0, triggers:0, triggerPoints:[], ssCount:0 };
     const s = getItemState(item);
+    const now = Date.now();
+    const ssCool = s.ssCooldownUntil > now;
     const lastTrigger = s.lastTrigger ? new Date(s.lastTrigger).toLocaleString('zh-CN') : '从未';
     let pointsHtml = '';
     if(stat.triggerPoints && stat.triggerPoints.length){
@@ -1225,9 +1232,10 @@
     } else {
       pointsHtml = '<span style="color:#555;">暂无触发记录</span>';
     }
+    const ssCoolInline = ssCool ? `<span class="ss-cool-tag" style="margin-left:8px;">👑 SS判定冷却 ${formatCooldown(s.ssCooldownUntil-now)}</span>` : '';
     document.getElementById('sHistoryLine').innerHTML = `
       📜 本机记录：尝试 <strong>${stat.attempts}</strong> 次 · 触发 <strong>${stat.triggers}</strong> 次 · SS出现 <strong>${stat.ssCount||0}</strong> 次
-      <span class="ver"> · 版本：${stat.version || tab}</span><br>
+      <span class="ver"> · 版本：${stat.version || tab}</span>${ssCoolInline}<br>
       🎯 触发点：${pointsHtml}<br>
       ⏰ 上次触发：<strong>${lastTrigger}</strong>
     `;
@@ -1244,7 +1252,9 @@
       const comment = liveRate >= 50 ? '小猪觉得很有戏哦！' : '小猪很遗憾哦，概率有点低……';
       ssRateEl.innerHTML = `🐗 触发此 S 怪后，出SS【${item.ssName}】的概率约 <strong>${liveRate}%</strong><span style="opacity:.7;font-size:.8em;">（自身基准 ${ownBase.toFixed(0)}% × 版本加权 ${Math.round(versionBase)}% · ${tr.icon} ${tr.text}）</span> — ${comment}<div style="font-size:.72em;opacity:.65;margin-top:4px;">该数值基于自身基准 70% + ${tab} 共 ${count} 只 S 怪加权值 30% 动态计算 · 每 10 秒波动一次</div>`;
     } else {
-      ssRateEl.style.display = 'none';
+      ssRateEl.style.display = 'block';
+      ssRateEl.className = 'ss-rate self';
+      ssRateEl.innerHTML = `📜 该版本（${tab}）没有 SS 隐藏 Boss 机制，触发后只有普通 S 怪。`;
     }
 
     document.getElementById('ssTryWrap').classList.add('active');
@@ -1264,7 +1274,7 @@
     }
 
     document.getElementById('triggerResultInline').classList.remove('active');
-    document.getElementById('sDetailTip').textContent = '※ 触发为动态判定！每只 S 怪独立进度 1 小时走满，触发成功后清零并进入 20 分钟冷却；SS 判定冷却 50 分钟；版本全触发后整版冷却 86 分钟；1 分钟最多 10 次。';
+    document.getElementById('sDetailTip').textContent = '※ 触发为动态阴间机制：可能 1% 早产，也可能点满还不回家；每只 S 怪独立进度 1 小时走满，触发成功后清零并进入 20 分钟冷却；SS 判定冷却 50 分钟；版本全触发后整版冷却 86 分钟；1 分钟最多 10 次。';
     renderGrid();
   }
 
@@ -1295,7 +1305,6 @@
       const bits = [];
       if(prog.cooling) bits.push(`冷却剩余 ${formatCooldown(prog.cooldownRemain)}`);
       else bits.push(`进度满还需 ${formatCooldown(prog.remainMs)}`);
-      if(s.ssCooldownUntil > now) bits.push(`SS判定冷却 ${formatCooldown(s.ssCooldownUntil-now)}`);
       if(recent > PENALTY_FREE_CLICKS) bits.push(`连点惩罚 ×${getClickPenalty(recent).toFixed(2)}`);
       eta.textContent = bits.join(' · ');
     }
@@ -1355,12 +1364,17 @@
         if(stats[item.name].triggerPoints.length > 50) stats[item.name].triggerPoints.shift();
       }
 
-      const ssResult = rollSS(item);
-      if(ssResult.success){
-        if(stats[item.name]) stats[item.name].ssCount = (stats[item.name].ssCount || 0) + 1;
-        showInlineResult(item, { success: true, early: sResult.early, ss: true, attempts: sResult.attempts });
+      if(item.ssName){
+        const ssResult = rollSS(item);
+        if(ssResult.success){
+          if(stats[item.name]) stats[item.name].ssCount = (stats[item.name].ssCount || 0) + 1;
+          showInlineResult(item, { success: true, early: sResult.early, ss: true, attempts: sResult.attempts });
+        } else {
+          showInlineResult(item, { success: true, early: sResult.early, ss: false, ssLocked: ssResult.locked, attempts: sResult.attempts });
+        }
       } else {
-        showInlineResult(item, { success: true, early: sResult.early, ss: false, ssLocked: ssResult.locked, attempts: sResult.attempts });
+        // 该版本无 SS 机制
+        showInlineResult(item, { success: true, early: sResult.early, noSS: true, attempts: sResult.attempts });
       }
 
       const versionComplete = checkVersionComplete(currentDetailTab);
@@ -1380,6 +1394,8 @@
       if(curItem && !curItem.isSS){
         const stat = stats[curItem.name] || { attempts:0, triggers:0, triggerPoints:[], ssCount:0 };
         const s = getItemState(curItem);
+        const now2 = Date.now();
+        const ssCoolInline = (s.ssCooldownUntil > now2) ? `<span class="ss-cool-tag" style="margin-left:8px;">👑 SS判定冷却 ${formatCooldown(s.ssCooldownUntil-now2)}</span>` : '';
         const lastTrigger = s.lastTrigger ? new Date(s.lastTrigger).toLocaleString('zh-CN') : '从未';
         let pointsHtml = '';
         if(stat.triggerPoints && stat.triggerPoints.length){
@@ -1393,7 +1409,7 @@
         }
         document.getElementById('sHistoryLine').innerHTML = `
           📜 本机记录：尝试 <strong>${stat.attempts}</strong> 次 · 触发 <strong>${stat.triggers}</strong> 次 · SS出现 <strong>${stat.ssCount||0}</strong> 次
-          <span class="ver"> · 版本：${stat.version || currentDetailTab}</span><br>
+          <span class="ver"> · 版本：${stat.version || currentDetailTab}</span>${ssCoolInline}<br>
           🎯 触发点：${pointsHtml}<br>
           ⏰ 上次触发：<strong>${lastTrigger}</strong>
         `;
@@ -1450,6 +1466,13 @@
       statRows.push(`<div class="row"><span>累计尝试</span><span>第 <strong>${r.attempts}</strong> 次</span></div>`);
       statRows.push(`<div class="row"><span>触发结果</span><span class="ok">✅ S 触发成功${r.early?'（早产）':''}</span></div>`);
       statRows.push(`<div class="row"><span>SS 判定</span><span class="no">❄ 冷却中</span></div>`);
+    } else if(r.success && r.noSS){
+      cls='partial'; emoji='🐗';
+      title = r.early ? '！1% 早产！' : 'S 怪触发了！';
+      sub = `<strong style="color:#6cf06c;">【${item.name}】</strong> 触发了！<br>该版本没有 SS 隐藏 Boss，只有普通 S 怪。`;
+      statRows.push(`<div class="row"><span>累计尝试</span><span>第 <strong>${r.attempts}</strong> 次</span></div>`);
+      statRows.push(`<div class="row"><span>触发结果</span><span class="ok">✅ S 触发成功${r.early?'（早产）':''}</span></div>`);
+      statRows.push(`<div class="row"><span>状态</span><span class="no">❄ S 冷却 20 分钟</span></div>`);
     } else if(r.success){
       cls='partial'; emoji='🐗';
       title = r.early ? '！1% 早产！可惜没带出 SS' : 'S 怪触发了！但没有 SS……';
@@ -2222,8 +2245,7 @@
     const versions=[
       {key:'7.0 S怪',label:'7.0',color:'#ffb000',bless:'黄金的遗产灵气最旺，新地图怪物最活跃'},
       {key:'6.0 S怪',label:'6.0',color:'#88ccff',bless:'晓月之终途的星辰最亮，月球附近的怪最容易出'},
-      {key:'5.0 S怪',label:'5.0',color:'#cc88ff',bless:'暗影之逆焰的暗之力最强，老玩家运气加成'},
-      {key:'4.0 S怪',label:'4.0',color:'#88ff88',bless:'红莲之狂潮的火焰最旺，阿拉米格附近的怪最容易出'}
+      {key:'5.0 S怪',label:'5.0',color:'#cc88ff',bless:'暗影之逆焰的暗之力最强，老玩家运气加成'}
     ];
     const shuffled=[...versions].sort(()=>Math.random()-0.5);
     const best=shuffled[0],second=shuffled[1];
