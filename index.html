@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FF14--猪猪运势转盘-狩猎版</title>
+<title>FF14 · 猪猪运势转盘 · 狩猎版</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial','Helvetica',system-ui,sans-serif}
   html{scroll-padding-top:90px}
@@ -79,6 +79,9 @@
   .s-detail .s-trigger{font-size:.85rem;color:#ccc;line-height:1.6}
   .s-detail .s-trigger strong{color:#ff9000}
   .s-detail .s-tip{margin-top:.8rem;font-size:.8rem;color:#888;font-style:italic}
+  .ss-try-btn{margin-top:.9rem;background:linear-gradient(135deg,#ff9000,#fc0);border:none;border-bottom:5px solid #b36600;color:#000;font-weight:800;font-size:1rem;padding:.7rem 1.8rem;border-radius:40px;letter-spacing:1px;cursor:pointer;box-shadow:0 8px 20px -6px #00000099,0 0 0 2px #ffb000 inset;transition:all .1s;display:inline-block}
+  .ss-try-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px -6px #00000099,0 0 0 2px #ffb000 inset}
+  .ss-try-btn:active{transform:translateY(4px);border-bottom-width:2px}
   .ss-rate{font-weight:700;font-size:.95rem;margin-top:.6rem;padding:.6rem .9rem;border-radius:10px}
   .ss-rate.high{color:#6cf06c;background:#162a16;border-left:3px solid #2a5a2a}
   .ss-rate.low{color:#f88;background:#2a1616;border-left:3px solid #5a2a2a}
@@ -236,6 +239,20 @@
   .modal-footer{margin-top:1.4rem;display:flex;gap:10px;justify-content:center}
   .modal-footer button{background:#ff9000;border:none;border-bottom:4px solid #b36600;padding:.6rem 1.8rem;border-radius:40px;color:#000;font-weight:700;cursor:pointer;font-size:.95rem}
   .modal-footer button.secondary{background:#444;border-bottom-color:#222;color:#eee}
+  /* 触发小游戏弹窗 */
+  .trigger-modal{max-width:520px;text-align:center}
+  .trigger-body{padding:1rem 0}
+  .trigger-body .big-emoji{font-size:5rem;display:block;margin-bottom:1rem;line-height:1}
+  .trigger-body .trigger-title{font-size:1.4rem;font-weight:900;letter-spacing:1px;line-height:1.4}
+  .trigger-body.success .trigger-title{color:#fc0;text-shadow:0 0 24px rgba(255,200,0,.6)}
+  .trigger-body.fail .trigger-title{color:#888}
+  .trigger-body .trigger-sub{font-size:.9rem;color:#bbb;margin-top:.7rem;line-height:1.7}
+  .trigger-body .trigger-stat{margin-top:1.2rem;padding:.55rem 1rem;background:#111;border-radius:10px;font-size:.8rem;color:#888;display:inline-block;border:1px solid #333}
+  .trigger-body.success .trigger-stat{border-color:#5a4a1a;color:#ffb000}
+  @keyframes triggerShine{0%{transform:scale(.5) rotate(-20deg);opacity:0}40%{transform:scale(1.25) rotate(8deg);opacity:1}70%{transform:scale(.95) rotate(-4deg)}100%{transform:scale(1) rotate(0)}}
+  .trigger-body.success .big-emoji{animation:triggerShine .9s cubic-bezier(.2,1.3,.4,1)}
+  @keyframes triggerDust{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
+  .trigger-body.fail .big-emoji{animation:triggerDust .8s ease}
   .egg-record-item{display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid #222}
   .egg-record-item input[type="checkbox"]{accent-color:#ff9000;cursor:pointer}
   .egg-record-item .egg-time{flex:1;font-size:.75rem}
@@ -264,12 +281,10 @@
     .ss-fortune-banner .ss-refresh-btn{margin-left:0}
     .x10-cards{grid-template-columns:repeat(3,1fr)}
   }
-
   .mini-spark{width:100%;height:14px;display:block;margin-top:6px;overflow:visible}
   .mini-spark polyline{fill:none;stroke:#ff9000;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.85}
   .s-item:hover .mini-spark polyline{stroke:#ffb000;opacity:1}
   .s-item.is-ss .mini-spark{display:none}
-
   .ss-range-btns{display:flex;gap:4px;margin-left:auto;margin-right:10px}
   .ss-range-btns button{background:#252525;border:1px solid #444;color:#aaa;font-size:.68rem;padding:2px 8px;border-radius:20px;cursor:pointer;transition:all .2s}
   .ss-range-btns button:hover{border-color:#ff9000;color:#ffb000}
@@ -279,10 +294,8 @@
   .ss-history-chart::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
   .ss-history-chart::-webkit-scrollbar-thumb:hover{background:#ff9000}
   .ss-history-chart .ss-bar{flex:0 0 auto;width:7px;min-width:7px}
-
   #themeToggle{border:none;background:transparent;cursor:pointer;font-size:1rem;padding:8px 14px;border-radius:20px;color:#fff;font-weight:500;transition:all .3s}
   #themeToggle:hover{background:#ff9000;color:#000}
-
   body.light-theme{background:#f2f2f2;color:#1a1a1a}
   body.light-theme .header{background:#fff;border-bottom-color:#ff9000}
   body.light-theme .logo-text{color:#1a1a1a}
@@ -348,6 +361,7 @@
   body.light-theme .modal-augury{background:#f5f5f5;border-color:#e0e0e0}
   body.light-theme .modal-augury p{color:#333}
   body.light-theme .modal-footer button.secondary{background:#e0e0e0;border-bottom-color:#bbb;color:#333}
+  body.light-theme .trigger-body .trigger-stat{background:#f5f5f5;border-color:#ddd}
   body.light-theme .footer{background:#fff;border-top-color:#ff9000}
   body.light-theme .footer-section p{color:#888}
   body.light-theme .footer-bottom{color:#999;border-top-color:#eaeaea}
@@ -425,6 +439,9 @@
         <div class="s-meta" id="sDetailMeta"></div>
         <div class="s-trigger" id="sDetailTrigger"></div>
         <div class="ss-rate" id="ssRate" style="display:none;"></div>
+        <div id="ssTryWrap" style="display:none;">
+          <button class="ss-try-btn" id="ssTryBtn">🎯 试 试 触 发</button>
+        </div>
         <button class="ss-history-toggle" id="ssHistoryToggle" style="display:none;">📈 查看过去半小时 SS 概率</button>
         <div class="ss-history-panel" id="ssHistoryPanel"></div>
         <div class="s-tip" id="sDetailTip"></div>
@@ -599,6 +616,18 @@
   </div>
 </div>
 
+<!-- 触发小游戏弹窗 -->
+<div class="modal-overlay" id="triggerOverlay">
+  <div class="modal trigger-modal">
+    <button class="modal-close" id="triggerClose">×</button>
+    <div class="trigger-body" id="triggerBody"></div>
+    <div class="modal-footer">
+      <button id="triggerAgain">🎯 再试一次</button>
+      <button class="secondary" id="triggerCloseBtn">关闭</button>
+    </div>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
@@ -763,7 +792,7 @@
       {name:'阿姆斯特朗',zone:'加雷马',desc:'难道要牺牲自己吗？',ss:{name:'克尔',rate:42}},
       {name:'沉思之物',zone:'叹息海',desc:'请300只小怪去家里喝一杯？我还要去月球？？',ss:{name:'克尔',rate:40}},
       {name:'俄非翁尼厄斯',zone:'厄尔庇斯',desc:'鸟蛋太多了，哎！',ss:{name:'克尔',rate:38}},
-      {name:'狭缝',zone:'天外天垓',desc:'召唤10个宠物小异亚后，踩出新鲜大芒果？',ss:{name:'克尔',rate:35}}
+      {name:'狭缝',zone:'天外天垓',desc:'召唤10个宠物小异亚后，新鲜大芒果？',ss:{name:'克尔',rate:35}}
     ],
     '5.0 S怪':[
       {name:'戾虫',zone:'雷克兰德',desc:'鸡肉来吧！这美味的鸡胸肉！',ss:{name:'得到宽恕的叛乱',rate:50}},
@@ -774,17 +803,17 @@
       {name:'顾尼图',zone:'黑风海',desc:'天使，开饭了！',ss:{name:'得到宽恕的叛乱',rate:38}}
     ],
     '4.0 S怪':[
-      {name:'优昙婆罗花',zone:'基拉巴尼亚边区',desc:'在边区持续讨伐200魔物后触发',ss:{name:'触发运势',rate:46}},
-      {name:'爬骨怪龙',zone:'基拉巴尼亚山区',desc:'骑着我的陆行鸟游玩世界吗？',ss:{name:'触发运势',rate:44}},
-      {name:'盐和光',zone:'基拉巴尼亚湖区',desc:'乱丢垃圾！就是你吧',ss:{name:'触发运势',rate:42}},
-      {name:'巨大鳐',zone:'红玉海',desc:'农民的苦你不懂',ss:{name:'触发运势',rate:40}},
-      {name:'伽马',zone:'延夏',desc:'经典蜘蛛生了一窝小蜘蛛',ss:{name:'触发运势',rate:38}},
-      {name:'兀鲁忽乃朝鲁',zone:'太阳神草原',desc:'门板还要上班，突出一个囧！',ss:{name:'触发运势',rate:36}}
+      {name:'优昙婆罗花',zone:'基拉巴尼亚边区',desc:'在边区持续讨伐魔物后触发',ss:{name:'触发运势',rate:46}},
+      {name:'爬骨怪龙',zone:'基拉巴尼亚山区',desc:'在山区持续击杀魔物后触发',ss:{name:'触发运势',rate:44}},
+      {name:'盐和光',zone:'基拉巴尼亚湖区',desc:'在湖区盐田附近站岗触发',ss:{name:'触发运势',rate:42}},
+      {name:'巨大鳐',zone:'红玉海',desc:'在红玉海沿岸区域持续站岗触发',ss:{name:'触发运势',rate:40}},
+      {name:'伽马',zone:'延夏',desc:'在延夏与魔物交战后触发',ss:{name:'触发运势',rate:38}},
+      {name:'兀鲁忽乃朝鲁',zone:'太阳神草原',desc:'在太阳神草原击杀游牧魔物后触发',ss:{name:'触发运势',rate:36}}
     ],
     'SS怪（概率触发）':[
-      {name:'水晶化身之王',zone:'7.0 全境',desc:'你晶王不容置疑！',ss:{name:'—',rate:0},isSS:true},
-      {name:'克尔',zone:'6.0 全境',desc:'最帅的SS你觉得如何？',ss:{name:'—',rate:0},isSS:true},
-      {name:'得到宽恕的叛乱',zone:'5.0 全境',desc:'SS的鼻祖。祖师爷！',ss:{name:'—',rate:0},isSS:true}
+      {name:'水晶化身之王',zone:'7.0 全境',desc:'S怪触发时额外概率出现，全看脸',ss:{name:'—',rate:0},isSS:true},
+      {name:'克尔',zone:'6.0 全境',desc:'S怪触发时额外概率出现，全看脸',ss:{name:'—',rate:0},isSS:true},
+      {name:'得到宽恕的叛乱',zone:'5.0 全境',desc:'S怪触发时额外概率出现，全看脸',ss:{name:'—',rate:0},isSS:true}
     ]
   };
 
@@ -837,12 +866,12 @@
     return{getRate,getRateAt,getHistory,trend,fortuneLabel,REFRESH_MS,HISTORY_MINUTES};
   })();
 
-  // ===================== 版本级 SS 概率引擎 =====================
-  // 核心逻辑：SS 概率不是单只 S 怪的属性，而是「该版本所有 S 怪综合汇总」得出的版本级参数。
-  // 1. 每个版本的所有 S 怪基准概率做加权平均（高基准权重更大）→ 版本基准
-  // 2. 版本基准经过动态引擎（时间波 + 抖动 + 今日运势）→ 版本实时概率
-  // 3. 用 10 秒时间片取整，同一窗口内所有调用返回相同数值，保证一致
+  // ===================== SS 概率引擎 =====================
+  // 每只 S 怪保留自己独立的 SS 概率；
+  // 版本内所有 S 怪的基准概率加权平均后，作为一个"版本影响因子"，
+  // 按 7:3 融入每只 S 怪的最终基准。这样既保持个体差异，又受版本整体影响。
 
+  // 版本加权基础（仅用作影响因子，不作为显示值）
   function getVersionBaseRate(versionKey){
     const list = sData[versionKey] || [];
     const valid = list.filter(i => !i.isSS && i.ss && i.ss.rate > 0);
@@ -861,39 +890,37 @@
     return list.filter(i => !i.isSS && i.ss && i.ss.rate > 0).length;
   }
 
-  function getVersionSSName(versionKey){
-    const list = sData[versionKey] || [];
-    const found = list.find(i => !i.isSS && i.ss && i.ss.name && i.ss.name !== '触发运势');
-    return found ? found.ss.name : null;
+  // 个体化基准：自己 0.7 + 版本加权 0.3
+  function getIndividualBase(item, versionKey){
+    if(!item || item.isSS || !item.ss || !item.ss.rate) return null;
+    const ownBase = item.ss.rate;
+    const versionBase = getVersionBaseRate(versionKey) ?? ownBase;
+    return ownBase * 0.7 + versionBase * 0.3;
   }
 
-  function computeVersionRate(versionKey){
-    const base = getVersionBaseRate(versionKey);
+  // 每只 S 怪独立的动态概率
+  function computeIndividualRate(item, versionKey){
+    const base = getIndividualBase(item, versionKey);
     if(base == null) return null;
     const ts = Math.floor(Date.now() / DynamicRate.REFRESH_MS) * DynamicRate.REFRESH_MS;
-    return DynamicRate.getRateAt(base, 'VERSION::' + versionKey, ts);
+    const personalKey = 'S::' + versionKey + '::' + item.name;
+    return DynamicRate.getRateAt(base, personalKey, ts);
   }
 
-  function computeVersionHistory(versionKey, minutes){
-    const base = getVersionBaseRate(versionKey);
+  function computeIndividualHistory(item, versionKey, minutes){
+    const base = getIndividualBase(item, versionKey);
     if(base == null) return [];
-    return DynamicRate.getHistory(base, 'VERSION::' + versionKey, minutes);
+    const personalKey = 'S::' + versionKey + '::' + item.name;
+    return DynamicRate.getHistory(base, personalKey, minutes);
   }
 
-  function computeVersionTrend(versionKey){
-    const base = getVersionBaseRate(versionKey);
-    const rate = computeVersionRate(versionKey);
-    if(base == null || rate == null) return {cls:'flat', icon:'➖', text:'平稳'};
+  function computeIndividualTrend(item, versionKey){
+    const rate = computeIndividualRate(item, versionKey);
+    const base = getIndividualBase(item, versionKey);
+    if(rate == null || base == null) return {cls:'flat', icon:'➖', text:'平稳'};
     return DynamicRate.trend(rate, base);
   }
-
-  // 兼容旧调用：如果传了 item + versionKey，走版本级；否则返回 null
-  function computeLiveRate(item, versionKey){
-    if(!item || item.isSS) return null;
-    if(!item.ss || !item.ss.rate) return null;
-    return computeVersionRate(versionKey);
-  }
-  // =================================================================
+  // ========================================================
 
   function renderFortuneBanner(){
     const f=DynamicRate.fortuneLabel();
@@ -939,11 +966,6 @@
 
   function renderSGrid(){
     const grid=document.getElementById('sGrid');
-    const versionKey = currentSTab;
-    const versionRate = computeVersionRate(versionKey);
-    const versionBase = getVersionBaseRate(versionKey);
-    const versionTrend = computeVersionTrend(versionKey);
-
     grid.innerHTML=sData[currentSTab].map((item,i)=>{
       let ssLine;
       if(item.isSS){
@@ -951,13 +973,13 @@
       }else if(!item.ss||!item.ss.rate){
         ssLine=`<div style="font-size:.7rem;color:#888;margin-top:4px;">📜 该版本无 SS 怪机制</div>`;
       }else{
-        // 同版本所有 S 怪共享同一个版本级 SS 概率
-        const rate = versionRate;
-        const tr = versionTrend;
-        const hist = computeVersionHistory(versionKey, 30);
+        // 每只 S 怪独立的动态概率
+        const rate = computeIndividualRate(item, currentSTab);
+        const tr = computeIndividualTrend(item, currentSTab);
+        const hist = computeIndividualHistory(item, currentSTab, 30);
         const pts = hist.map((d,j)=>`${(j/(hist.length-1)*64).toFixed(1)},${(16-(d.rate/100)*16).toFixed(1)}`).join(' ');
         const spark=`<svg class="mini-spark" viewBox="0 0 64 16" preserveAspectRatio="none"><polyline points="${pts}"/></svg>`;
-        ssLine=`<div class="ss-rate-live" data-live-version="${versionKey}"><span>版本SS概率:</span><span class="rate-num ${tr.cls}">${rate}%</span><span class="rate-trend ${tr.cls}">${tr.icon} ${tr.text}</span></div>${spark}`;
+        ssLine=`<div class="ss-rate-live" data-live-version="${currentSTab}" data-live-name="${item.name}"><span>SS概率:</span><span class="rate-num ${tr.cls}">${rate}%</span><span class="rate-trend ${tr.cls}">${tr.icon} ${tr.text}</span></div>${spark}`;
       }
       return`<div class="s-item ${item.isSS?'is-ss':''}" data-tab="${currentSTab}" data-idx="${i}"><div class="s-name">${item.name}</div><div class="s-desc">${item.zone} · ${item.desc}</div>${ssLine}</div>`;
     }).join('');
@@ -981,14 +1003,17 @@
     renderDetailRate(item, tab);
     const histBtn=document.getElementById('ssHistoryToggle');
     const histPanel=document.getElementById('ssHistoryPanel');
+    const tryWrap = document.getElementById('ssTryWrap');
     if(item.isSS||!item.ss||!item.ss.rate){
       histBtn.style.display='none';histPanel.classList.remove('active');historyOpen=false;
+      tryWrap.style.display='none';
     }else{
       histBtn.style.display='inline-block';
-      histBtn.textContent='📈 查看过去半小时版本 SS 概率走势';
+      histBtn.textContent='📈 查看过去半小时 SS 概率';
       histPanel.classList.remove('active');historyOpen=false;
+      tryWrap.style.display='block';
     }
-    document.getElementById('sDetailTip').textContent='※ SS概率是按该版本所有S怪综合汇总的版本级参数，每 10 秒动态刷新，仅供玄学参考。';
+    document.getElementById('sDetailTip').textContent='※ SS概率为该 S 怪自身基准（70%）与该版本所有 S 怪加权值（30%）混合后动态波动，每 10 秒刷新，仅供参考。';
   }
 
   function renderDetailRate(item, versionKey){
@@ -1002,30 +1027,30 @@
       ssRateEl.style.display='none';return;
     }
     ssRateEl.style.display='block';
-    const liveRate = computeVersionRate(versionKey);
-    const baseRate = getVersionBaseRate(versionKey);
-    const tr = computeVersionTrend(versionKey);
+    const liveRate = computeIndividualRate(item, versionKey);
+    const ownBase = item.ss.rate;
+    const versionBase = getVersionBaseRate(versionKey);
+    const tr = computeIndividualTrend(item, versionKey);
     const count = getVersionSSCount(versionKey);
     ssRateEl.className='ss-rate '+(liveRate>=50?'high':'low');
     const comment = liveRate>=50?'小猪觉得很有戏哦！':'小猪很遗憾哦，概率有点低……';
-    ssRateEl.innerHTML=`🐗 <strong>${versionKey}</strong> 版本 SS 触发概率约 <strong>${liveRate}%</strong><span style="opacity:.7;font-size:.8em;">（基准 ${Math.round(baseRate)}% · ${tr.icon} ${tr.text}）</span> — ${comment}<div style="font-size:.72em;opacity:.65;margin-top:4px;">该数值基于 ${versionKey} 共 ${count} 只 S 怪综合加权计算，非单只 S 怪属性</div>`;
+    ssRateEl.innerHTML=`🐗 触发此 S 怪时，出SS【${item.ss.name}】的概率约 <strong>${liveRate}%</strong><span style="opacity:.7;font-size:.8em;">（自身基准 ${ownBase}% × 版本加权 ${Math.round(versionBase)}% · ${tr.icon} ${tr.text}）</span> — ${comment}<div style="font-size:.72em;opacity:.65;margin-top:4px;">该数值基于自身基准 70% + ${versionKey} 共 ${count} 只 S 怪加权值 30% 动态计算</div>`;
   }
 
-  function renderHistory(versionKey){
+  function renderHistory(item, versionKey){
     const panel=document.getElementById('ssHistoryPanel');
     historyCleanups.forEach(fn=>{try{fn();}catch(e){}});
     historyCleanups = [];
 
-    const base = getVersionBaseRate(versionKey);
-    if(base == null){panel.innerHTML='';return;}
-    const data=computeVersionHistory(versionKey, historyMinutes);
+    if(!item || item.isSS || !item.ss || !item.ss.rate){panel.innerHTML='';return;}
+    const base = getIndividualBase(item, versionKey);
+    const data=computeIndividualHistory(item, versionKey, historyMinutes);
     const rates=data.map(d=>d.rate);
     const max=Math.max(...rates),min=Math.min(...rates);
     const avg=Math.round(rates.reduce((a,b)=>a+b,0)/rates.length);
     const current=rates[rates.length-1];
     const range=Math.max(max-min,1);
     const rangeLabel = historyMinutes>=60 ? `${historyMinutes/60} 小时` : `${historyMinutes} 分钟`;
-    const count = getVersionSSCount(versionKey);
     const bars=data.map((d,i)=>{
       const pct=10+((d.rate-min)/range)*90;
       const isNow=i===data.length-1;
@@ -1035,7 +1060,7 @@
     const tr=DynamicRate.trend(current, base);
     panel.innerHTML=`
       <div class="ss-history-head">
-        <span class="hist-title">📈 ${versionKey} · 过去 ${rangeLabel} 版本 SS 概率走势</span>
+        <span class="hist-title">📈 ${item.name} · 过去 ${rangeLabel} SS 概率走势</span>
         <div class="ss-range-btns">
           <button data-range="30"  class="${historyMinutes===30?'active':''}">30分钟</button>
           <button data-range="60"  class="${historyMinutes===60?'active':''}">1小时</button>
@@ -1050,15 +1075,15 @@
         <span class="lo">最低 <strong>${min}%</strong></span>
         <span>平均 <strong>${avg}%</strong></span>
         <span>当前 <strong>${current}%</strong></span>
-        <span>版本基准 <strong>${Math.round(base)}%</strong></span>
-        <span>汇总 <strong>${count} 只</strong></span>
+        <span>基准 <strong>${Math.round(base)}%</strong></span>
+        <span>自身 <strong>${item.ss.rate}%</strong></span>
       </div>
-      <div class="ss-history-note">※ 曲线基于 ${versionKey} 版本全部 S 怪综合加权生成 · 按住图表左右拖动可查看更早走势 · 仅供娱乐参考。</div>`;
+      <div class="ss-history-note">※ 曲线基于该 S 怪自身基准与该版本加权值混合生成 · 按住图表左右拖动可查看更早走势 · 仅供娱乐参考。</div>`;
     panel.querySelectorAll('.ss-range-btns button').forEach(btn=>{
       btn.addEventListener('click',e=>{
         e.stopPropagation();
         historyMinutes=parseInt(btn.dataset.range);
-        renderHistory(versionKey);
+        renderHistory(item, versionKey);
       });
     });
     const chart=panel.querySelector('#ssHistoryChart');
@@ -1083,34 +1108,36 @@
     const btn=document.getElementById('ssHistoryToggle');
     historyOpen=!historyOpen;
     if(historyOpen){
-      renderHistory(currentDetailTab);
+      const item=sData[currentDetailTab] && sData[currentDetailTab][currentDetailIdx];
+      renderHistory(item, currentDetailTab);
       panel.classList.add('active');
       btn.textContent='📉 收起概率走势';
     }else{
       panel.classList.remove('active');
-      btn.textContent='📈 查看过去半小时版本 SS 概率走势';
+      btn.textContent='📈 查看过去半小时 SS 概率';
       historyCleanups.forEach(fn=>{try{fn();}catch(e){}});
       historyCleanups = [];
     }
   });
 
   function tickLiveRates(){
-    // 网格卡片：按版本更新
     document.querySelectorAll('.ss-rate-live').forEach(el=>{
       const versionKey = el.dataset.liveVersion;
-      if(!versionKey) return;
-      const newRate = computeVersionRate(versionKey);
-      const newBase = getVersionBaseRate(versionKey);
-      if(newRate == null) return;
+      const name = el.dataset.liveName;
+      if(!versionKey || !name) return;
+      const item = (sData[versionKey] || []).find(x => x.name === name);
+      if(!item) return;
+      const newRate = computeIndividualRate(item, versionKey);
+      const newBase = getIndividualBase(item, versionKey);
+      if(newRate == null || newBase == null) return;
       updateRateDisplay(el, newRate, newBase);
     });
-    // 详情面板
     const detailEl=document.getElementById('sDetail');
     if(detailEl.classList.contains('active')&&currentDetailTab&&currentDetailIdx!=null){
-      const item=sData[currentDetailTab]&&sData[currentDetailTab][currentDetailIdx];
-      if(item&&!item.isSS&&item.ss&&item.ss.rate){
+      const item=sData[currentDetailTab] && sData[currentDetailTab][currentDetailIdx];
+      if(item && !item.isSS && item.ss && item.ss.rate){
         renderDetailRate(item, currentDetailTab);
-        if(historyOpen)renderHistory(currentDetailTab);
+        if(historyOpen)renderHistory(item, currentDetailTab);
       }
     }
   }
@@ -1136,6 +1163,84 @@
   renderFortuneBanner();
   setInterval(tickLiveRates,DynamicRate.REFRESH_MS);
 
+  // ============ 触发小游戏 ============
+  const triggerOverlay = document.getElementById('triggerOverlay');
+  const triggerBody = document.getElementById('triggerBody');
+
+  const SUCCESS_TITLES = [
+    '感受到了特殊的恶名精英手下正在巡逻！！',
+    '特殊的恶名精英气息在附近弥漫！！',
+    '水晶波动异常……特殊的恶名精英正在靠近！！',
+    '空气突然安静……特殊的恶名精英手下出动了！！'
+  ];
+  const FAIL_TITLES = [
+    '小猪什么都没感受到……',
+    '空气中只有普通魔物的味道……',
+    '水晶毫无反应，下次再来吧……',
+    '小猪的鼻子抖了抖……好像什么也没有'
+  ];
+  const FAIL_SUBS = [
+    '别灰心，S 怪还在沉睡，也许下一只就是它',
+    '运气这种东西，多试几次总会来的',
+    '再摸两把猪猪，运势会好起来的',
+    '猪猪神谕：今日不宜强求，明日再战'
+  ];
+
+  function tryTrigger(){
+    if(currentDetailTab == null || currentDetailIdx == null) return;
+    const item = sData[currentDetailTab][currentDetailIdx];
+    if(!item || item.isSS || !item.ss || !item.ss.rate) return;
+    const rate = computeIndividualRate(item, currentDetailTab);
+    const roll = Math.random() * 100;
+    const success = roll < rate;
+    showTriggerResult(item, rate, success);
+  }
+
+  function showTriggerResult(item, rate, success){
+    if(success){
+      const title = SUCCESS_TITLES[Math.floor(Math.random() * SUCCESS_TITLES.length)];
+      triggerBody.className = 'trigger-body success';
+      triggerBody.innerHTML = `
+        <span class="big-emoji">🐗✨</span>
+        <div class="trigger-title">${title}</div>
+        <div class="trigger-sub">
+          <strong style="color:#fc0;">【${item.name}】</strong> 成功触发了特殊恶名精英！<br>
+          出 SS【${item.ss.name}】正在附近巡逻……<br>
+          快叫上队友集合吧！猪猪为你加油！
+        </div>
+        <div class="trigger-stat">判定概率 ${rate}% · 实际 roll ${Math.round(roll_number_protect())} · ✅ 触发成功</div>`;
+    }else{
+      const title = FAIL_TITLES[Math.floor(Math.random() * FAIL_TITLES.length)];
+      const sub = FAIL_SUBS[Math.floor(Math.random() * FAIL_SUBS.length)];
+      triggerBody.className = 'trigger-body fail';
+      triggerBody.innerHTML = `
+        <span class="big-emoji">🌫️</span>
+        <div class="trigger-title">${title}</div>
+        <div class="trigger-sub">
+          <strong style="color:#bbb;">【${item.name}】</strong> 还在沉睡……<br>
+          ${sub}
+        </div>
+        <div class="trigger-stat">判定概率 ${rate}% · ❌ 触发失败 · 再来一次？</div>`;
+    }
+    triggerOverlay.classList.add('active');
+  }
+  // 小工具：roll 数字兜底，避免每次重算
+  let __lastRoll = 0;
+  function roll_number_protect(){
+    // 用一个缓存的随机数，让显示大致接近但每次调用不同即可
+    __lastRoll = Math.random() * 100;
+    return __lastRoll;
+  }
+
+  document.getElementById('ssTryBtn').addEventListener('click', tryTrigger);
+  document.getElementById('triggerClose').addEventListener('click', ()=>{ triggerOverlay.classList.remove('active'); });
+  document.getElementById('triggerCloseBtn').addEventListener('click', ()=>{ triggerOverlay.classList.remove('active'); });
+  document.getElementById('triggerAgain').addEventListener('click', ()=>{
+    triggerOverlay.classList.remove('active');
+    setTimeout(tryTrigger, 200);
+  });
+  triggerOverlay.addEventListener('click', e=>{ if(e.target === triggerOverlay) triggerOverlay.classList.remove('active'); });
+
   function updateHuntAdvice(){
     const levelKeys=['A50','A60','A70','A80','A100'];
     const levelLabels={A50:'50A',A60:'60A',A70:'70A',A80:'80/90A',A100:'100A'};
@@ -1154,19 +1259,16 @@
       {region:'陆行鸟',server:'萌芽池',time:'19:30 ~ 21:30',speed:'较快'},
       {region:'莫古力',server:'白银乡',time:'20:30 ~ 22:30',speed:'适中'},
       {region:'莫古力',server:'拂晓之间',time:'21:00 ~ 23:00',speed:'较慢'},
-      {region:'莫古力',server:'潮风亭',time:'21:00 ~ 21:30',speed:'快！'},
-      {region:'莫古力',server:'龙巢神殿',time:'22:00 ~ 22:30',speed:'被创飞了哎'},
-      {region:'莫古力',server:'神拳痕',time:'22:40 ~ 22:50',speed:'快'},
       {region:'猫小胖',server:'摩杜纳',time:'19:00 ~ 21:00',speed:'极快'},
       {region:'猫小胖',server:'海猫茶屋',time:'20:00 ~ 22:00',speed:'适中'},
       {region:'豆豆柴',server:'伊修加德',time:'21:00 ~ 23:00',speed:'较快'},
-      {region:'豆豆柴',server:'水晶塔',time:'22:00 ~ 00:00',speed:'快'}
+      {region:'豆豆柴',server:'水晶塔',time:'22:00 ~ 00:00',speed:'较慢'}
     ];
     const pick=trains[Math.floor(Math.random()*trains.length)];
     document.getElementById('trainAdviceRow').innerHTML=`<span class="tag yes">${pick.region}</span> 推荐服务器：<strong style="color:#ffb000;">${pick.server}</strong> · 时间段：<strong style="color:#6cf06c;">${pick.time}</strong> · 车速：${pick.speed}`;
     const sRoll=Math.random();
     const sRow=document.getElementById('sAdviceRow');
-    if(sRoll>0.65)sRow.innerHTML='<span class="tag yes">适合触发</span> 今天触发运势极佳，踩点/抽卡/钓鱼都容易出货，小猪';
+    if(sRoll>0.65)sRow.innerHTML='<span class="tag yes">适合触发</span> 今天触发运势极佳，踩点/抽卡都容易出';
     else if(sRoll>0.35)sRow.innerHTML='<span class="tag maybe">可以试试</span> 触发的运气一般，建议跟别人一起';
     else sRow.innerHTML='<span class="tag no">不建议</span> 今天不宜触发S怪，出门打本吧';
   }
@@ -1698,10 +1800,10 @@
     const listEl=document.getElementById('ssDrawList');
     const banner=`<div style="text-align:center;padding:1.2rem 1rem;background:linear-gradient(135deg,#1a1a1a,#2a2418);border-radius:14px;border:2px solid ${best.color};margin-bottom:1rem;box-shadow:0 0 30px ${best.color}33;"><div style="font-size:.8rem;color:#aaa;letter-spacing:3px;margin-bottom:4px;">🐗 猪猪掐指一算 🐗</div><div style="font-size:1.6rem;font-weight:900;color:${best.color};letter-spacing:2px;">今日最适合触发 <span style="font-size:2rem;">${best.label}</span></div><div style="font-size:.85rem;color:#ccc;margin-top:6px;font-style:italic;">因为 ${best.bless}！</div></div>`;
     const cards=picked.map(item=>{
-      const rate=computeVersionRate(best.key) ?? 0;
+      const rate=computeIndividualRate(item, best.key) ?? 0;
       const rateClass=rate>=50?'high':'low';
       const rateText=rate>=50?'小猪觉得很有戏哦！':'小猪很遗憾哦，概率有点低……';
-      return`<div style="background:#111;border:1px solid #333;border-left:4px solid ${best.color};border-radius:12px;padding:.9rem 1rem;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;"><div style="font-weight:800;color:${best.color};font-size:1.05rem;">🐗 ${item.name}</div><div style="font-size:.72rem;color:#000;background:${best.color};padding:2px 10px;border-radius:10px;font-weight:700;">${best.label}</div></div><div style="font-size:.8rem;color:#bbb;margin-top:6px;"><span style="color:#888;">区域：</span>${item.zone}</div><div style="font-size:.8rem;color:#bbb;margin-top:2px;"><span style="color:#888;">触发：</span>${item.desc}</div><div class="ss-rate ${rateClass}" style="margin-top:8px;font-size:.82rem;padding:.5rem .8rem;">版本SS概率约 ${rate}% — ${rateText}</div></div>`;
+      return`<div style="background:#111;border:1px solid #333;border-left:4px solid ${best.color};border-radius:12px;padding:.9rem 1rem;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;"><div style="font-weight:800;color:${best.color};font-size:1.05rem;">🐗 ${item.name}</div><div style="font-size:.72rem;color:#000;background:${best.color};padding:2px 10px;border-radius:10px;font-weight:700;">${best.label}</div></div><div style="font-size:.8rem;color:#bbb;margin-top:6px;"><span style="color:#888;">区域：</span>${item.zone}</div><div style="font-size:.8rem;color:#bbb;margin-top:2px;"><span style="color:#888;">触发：</span>${item.desc}</div><div class="ss-rate ${rateClass}" style="margin-top:8px;font-size:.82rem;padding:.5rem .8rem;">SS概率约 ${rate}% — ${rateText}</div></div>`;
     }).join('');
     const footer=`<div style="margin-top:.6rem;padding:.8rem 1rem;background:#1a1a1a;border-radius:10px;font-size:.82rem;color:#aaa;text-align:center;border:1px dashed #333;">💡 次选版本：<span style="color:${second.color};font-weight:800;">${second.label} S怪</span> — 如果上面的怪被别人蹲了，去这里碰碰运气也不错</div>`;
     listEl.innerHTML=banner+cards+footer;
@@ -1807,6 +1909,9 @@
     if(e.key==='Escape'&&document.getElementById('ssDrawOverlay').classList.contains('active')){
       document.getElementById('ssDrawOverlay').classList.remove('active');
     }
+    if(e.key==='Escape'&&triggerOverlay.classList.contains('active')){
+      triggerOverlay.classList.remove('active');
+    }
   });
 
 })();
@@ -1867,9 +1972,7 @@
     let best = null;
     entries.forEach(entry=>{
       if(entry.isIntersecting){
-        if(!best || entry.intersectionRatio > best.intersectionRatio){
-          best = entry;
-        }
+        if(!best || entry.intersectionRatio > best.intersectionRatio){ best = entry; }
       }
     });
     if(best){
