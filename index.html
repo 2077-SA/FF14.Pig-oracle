@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FF14 猪猪运势转盘 </title>
+<title>FF14 · 猪猪运势转盘 · 狩猎版</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial','Helvetica',system-ui,sans-serif}
+  html{scroll-padding-top:90px}
   body{min-height:100vh;background:#0f0f0f;color:#fff;line-height:1.6}
   .container{max-width:1100px;margin:0 auto;padding:0 20px}
   .header{background:#000;border-bottom:2px solid #ff9000;position:sticky;top:0;z-index:100}
@@ -245,6 +246,99 @@
     .s-grid{grid-template-columns:1fr}
     .ss-fortune-banner .ss-refresh-btn{margin-left:0}
   }
+
+  /* ================= 新增样式 ================= */
+
+  /* S 怪迷你 sparkline */
+  .mini-spark{width:100%;height:14px;display:block;margin-top:6px;overflow:visible}
+  .mini-spark polyline{fill:none;stroke:#ff9000;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.85}
+  .s-item:hover .mini-spark polyline{stroke:#ffb000;opacity:1}
+  .s-item.is-ss .mini-spark{display:none}
+
+  /* 历史曲线时间范围按钮 + 拖拽 */
+  .ss-range-btns{display:flex;gap:4px;margin-left:auto;margin-right:10px}
+  .ss-range-btns button{background:#252525;border:1px solid #444;color:#aaa;font-size:.68rem;padding:2px 8px;border-radius:20px;cursor:pointer;transition:all .2s}
+  .ss-range-btns button:hover{border-color:#ff9000;color:#ffb000}
+  .ss-range-btns button.active{background:#ff9000;border-color:#ff9000;color:#000;font-weight:700}
+  .ss-history-chart{overflow-x:auto;overflow-y:hidden;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:#555 transparent;cursor:grab}
+  .ss-history-chart::-webkit-scrollbar{height:6px}
+  .ss-history-chart::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
+  .ss-history-chart::-webkit-scrollbar-thumb:hover{background:#ff9000}
+  .ss-history-chart .ss-bar{flex:0 0 auto;width:7px;min-width:7px}
+
+  /* 主题切换按钮 */
+  #themeToggle{border:none;background:transparent;cursor:pointer;font-size:1rem;padding:8px 14px;border-radius:20px;color:#fff;font-weight:500;transition:all .3s}
+  #themeToggle:hover{background:#ff9000;color:#000}
+
+  /* ========== 浅色主题覆盖 ========== */
+  body.light-theme{background:#f2f2f2;color:#1a1a1a}
+  body.light-theme .header{background:#fff;border-bottom-color:#ff9000}
+  body.light-theme .logo-text{color:#1a1a1a}
+  body.light-theme .nav-link{color:#333}
+  body.light-theme #themeToggle{color:#333}
+  body.light-theme #themeToggle:hover{color:#000}
+  body.light-theme .card,body.light-theme .lottery-panel,body.light-theme .scratch-panel,
+  body.light-theme .race-panel,body.light-theme .tarot-panel,body.light-theme .s-panel,
+  body.light-theme .mini-tool{background:#fff;border-color:#e0e0e0;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+  body.light-theme .section-title{color:#1a1a1a}
+  body.light-theme .mini-tool h3,body.light-theme .hunt-advice-box h4{color:#d97706}
+  body.light-theme .counter-value{background:#f5f5f5;border-color:#ddd;color:#d97706}
+  body.light-theme .tool-log,body.light-theme .s-detail .s-tip{color:#888}
+  body.light-theme .small-note,body.light-theme .ss-history-note{color:#999}
+  body.light-theme .server-select,body.light-theme .spin-time-row input,
+  body.light-theme .race-controls select{background:#fff;border-color:#ddd;color:#1a1a1a}
+  body.light-theme .spin-time-row{color:#666}
+  body.light-theme .hunt-advice-box{background:#f9f9f9;border-color:#e0e0e0}
+  body.light-theme .s-tab{background:#f0f0f0;border-color:#ddd;color:#555}
+  body.light-theme .s-item{background:#f9f9f9;border-color:#e0e0e0}
+  body.light-theme .s-item .s-name{color:#7c3aed}
+  body.light-theme .s-item.is-ss{background:#fef9e7;border-color:#e8d9a0}
+  body.light-theme .s-item .s-desc{color:#666}
+  body.light-theme .s-detail{background:#f5f5f5;border-color:#e0e0e0}
+  body.light-theme .s-detail .s-meta span{background:#eaeaea}
+  body.light-theme .s-detail .s-trigger{color:#333}
+  body.light-theme .ss-fortune-banner{background:#f5f5f5;border-color:#e0e0e0}
+  body.light-theme .ss-fortune-banner.up{background:#ecfdf5;border-color:#6ee7b7;color:#059669}
+  body.light-theme .ss-fortune-banner.down{background:#fef2f2;border-color:#fca5a5;color:#dc2626}
+  body.light-theme .ss-fortune-banner.flat{color:#666}
+  body.light-theme .ss-fortune-banner .ss-refresh-btn{background:#eaeaea;border-color:#ddd;color:#d97706}
+  body.light-theme .ss-rate-live{color:#666}
+  body.light-theme .ss-history-panel{background:#f5f5f5;border-color:#e0e0e0}
+  body.light-theme .ss-history-stats span{background:#fff;border-color:#ddd;color:#666}
+  body.light-theme .ss-history-toggle{background:#eaeaea;border-color:#ddd;color:#d97706}
+  body.light-theme .ss-range-btns button{background:#eaeaea;border-color:#ddd;color:#666}
+  body.light-theme .lottery-display{background:radial-gradient(circle at 40% 35%,#fff,#eaeaea)}
+  body.light-theme .lottery-history{color:#666}
+  body.light-theme .lottery-history .lh-entry{border-bottom-color:#eaeaea}
+  body.light-theme .lottery-stats{color:#666}
+  body.light-theme .lottery-stats span,body.light-theme .scratch-info span{background:#eaeaea}
+  body.light-theme .scratch-info{color:#666}
+  body.light-theme .scratch-cell{background:linear-gradient(135deg,#d0d0d0,#a0a0a0)}
+  body.light-theme .scratch-cell.revealed{background:#f0f0f0;border-color:#ccc}
+  body.light-theme .scratch-cell.win{background:#fef9e7;border-color:#f59e0b}
+  body.light-theme .scratch-result{color:#333}
+  body.light-theme .race-lane .lane-track{background:linear-gradient(90deg,#eaeaea,#f5f5f5);border-color:#ddd}
+  body.light-theme .race-bank{color:#666}
+  body.light-theme .tarot-card{background:linear-gradient(145deg,#fef9e7,#faf0d7);border-color:#d4a853}
+  body.light-theme .tarot-card .t-name{color:#b8860b}
+  body.light-theme .tarot-card .t-meaning{color:#4a3a1a;border-top-color:#d4a853}
+  body.light-theme .tarot-stats{color:#888}
+  body.light-theme .modal{background:#fff;border-color:#ff9000}
+  body.light-theme .modal-close{color:#999}
+  body.light-theme .modal-header{border-bottom-color:#e0e0e0}
+  body.light-theme .modal-title-block h2,body.light-theme .modal-item .label{color:#d97706}
+  body.light-theme .modal-item .value{background:#f5f5f5;color:#333}
+  body.light-theme .modal-augury{background:#f5f5f5;border-color:#e0e0e0}
+  body.light-theme .modal-augury p{color:#333}
+  body.light-theme .modal-footer button.secondary{background:#e0e0e0;border-bottom-color:#bbb;color:#333}
+  body.light-theme .footer{background:#fff;border-top-color:#ff9000}
+  body.light-theme .footer-section p{color:#888}
+  body.light-theme .footer-bottom{color:#999;border-top-color:#eaeaea}
+  body.light-theme .wheel{box-shadow:0 0 0 6px #fff,0 0 0 9px #ff9000,0 15px 30px rgba(0,0,0,.15)}
+  body.light-theme .wheel-center{box-shadow:inset 0 -4px 0 #b36600,0 0 0 4px #fff}
+  body.light-theme .egg-record-item,body.light-theme .farm-record-item{border-bottom-color:#eaeaea}
+  body.light-theme .ss-history-chart{border-bottom-color:#ddd}
+  body.light-theme .ss-history-chart::before{border-top-color:#e0e0e0}
 </style>
 </head>
 <body>
@@ -258,6 +352,8 @@
         <a href="#lottery" class="nav-link">猪猪盲盒</a>
         <a href="#s-panel" class="nav-link">S怪触发</a>
         <a href="#scratch" class="nav-link">金碟刮刮乐</a>
+        <a href="#race" class="nav-link">猪猪赛跑</a>
+        <a href="#tarot" class="nav-link">猪猪塔罗</a>
         <a href="#tools" class="nav-link">辅助工具</a>
       </nav>
     </div>
@@ -372,8 +468,6 @@
         <select id="racePick">
           <option value="black">🐗 黑毛猪</option>
           <option value="pink" selected>🐷 粉红小猪</option>
-          <option value="striped">🐖 条纹猪</option>
-          <option value="gold">🐽 金猪</option>
         </select>
         <span style="font-size:.85rem;color:#aaa;">押注:</span>
         <select id="raceBet">
@@ -383,6 +477,7 @@
           <option value="500">500 猪猪币</option>
         </select>
         <button id="raceStartBtn">🚦 开始赛跑</button>
+        <button id="raceCustomBtn" style="background:#ff9000;border:none;border-bottom:4px solid #b36600;padding:.4rem 1.1rem;border-radius:30px;color:#000;font-weight:600;cursor:pointer;font-size:.85rem;">➕ 自定义猪</button>
         <button id="raceResetBtn" class="secondary" style="background:#444;border-bottom-color:#222;color:#eee;border:none;border-bottom:4px solid #222;padding:.4rem 1.1rem;border-radius:30px;font-weight:600;cursor:pointer;font-size:.85rem;">重置猪猪币</button>
       </div>
       <div class="race-result" id="raceResult">选择一只猪，然后点击"开始赛跑"！</div>
@@ -391,7 +486,7 @@
 
     <!-- 猪猪塔罗 -->
     <div class="tarot-panel" id="tarot">
-      <div class="section-title">🔮 猪猪塔罗牌 </div>
+      <div class="section-title">🔮 猪猪塔罗牌 · 今日命运指引</div>
       <div class="tarot-machine">
         <div class="tarot-deck" id="tarotDeck">🐷</div>
         <div class="tarot-card" id="tarotCard">
@@ -408,7 +503,7 @@
     <!-- 辅助工具 -->
     <section class="tool-section" id="tools">
       <div class="mini-tool">
-        <h3>🥚你也要触发神鸟？这是龙蛋计数器</h3>
+        <h3>🥚 龙蛋计数器</h3>
         <div class="tool-content" style="margin-bottom:6px;">
           <select class="server-select" id="eggServerSelect"><option value="">选择服务器</option></select>
           <button id="eggAddBtn">+1 龙蛋</button>
@@ -671,6 +766,14 @@
       {name:'伊休妲',zone:'拉凯提卡大森林',desc:'请300只小怪去家里喝一杯？',ss:{name:'得到宽恕的叛乱',rate:40}},
       {name:'顾尼图',zone:'黑风海',desc:'天使，开饭了！',ss:{name:'得到宽恕的叛乱',rate:38}}
     ],
+    '4.0 S怪':[
+      {name:'优昙婆罗花',zone:'基拉巴尼亚边区',desc:'在边区持续讨伐魔物后触发',ss:{name:'触发运势',rate:46}},
+      {name:'爬骨怪龙',zone:'基拉巴尼亚山区',desc:'在山区持续击杀魔物后触发',ss:{name:'触发运势',rate:44}},
+      {name:'盐和光',zone:'基拉巴尼亚湖区',desc:'在湖区盐田附近站岗触发',ss:{name:'触发运势',rate:42}},
+      {name:'巨大鳐',zone:'红玉海',desc:'在红玉海沿岸区域持续站岗触发',ss:{name:'触发运势',rate:40}},
+      {name:'伽马',zone:'延夏',desc:'在延夏与魔物交战后触发',ss:{name:'触发运势',rate:38}},
+      {name:'兀鲁忽乃朝鲁',zone:'太阳神草原',desc:'在太阳神草原击杀游牧魔物后触发',ss:{name:'触发运势',rate:36}}
+    ],
     'SS怪（概率触发）':[
       {name:'水晶化身之王',zone:'7.0 全境',desc:'S怪触发时额外概率出现，全看脸',ss:{name:'—',rate:0},isSS:true},
       {name:'克尔',zone:'6.0 全境',desc:'S怪触发时额外概率出现，全看脸',ss:{name:'—',rate:0},isSS:true},
@@ -783,10 +886,15 @@
       let ssLine;
       if(item.isSS){
         ssLine=`<div style="font-size:.7rem;color:#fc0;margin-top:4px;">👑 SS怪 · 全境概率触发</div>`;
+      }else if(!item.ss||!item.ss.rate){
+        ssLine=`<div style="font-size:.7rem;color:#888;margin-top:4px;">📜 该版本无 SS 怪机制</div>`;
       }else{
         const rate=computeLiveRate(item);
         const tr=DynamicRate.trend(rate,item.ss.rate);
-        ssLine=`<div class="ss-rate-live" data-live-key="${item.name}" data-live-base="${item.ss.rate}"><span>SS概率:</span><span class="rate-num ${tr.cls}">${rate}%</span><span class="rate-trend ${tr.cls}">${tr.icon} ${tr.text}</span></div>`;
+        const hist=DynamicRate.getHistory(item.ss.rate,item.name,30);
+        const pts=hist.map((d,j)=>`${(j/(hist.length-1)*64).toFixed(1)},${(16-(d.rate/100)*16).toFixed(1)}`).join(' ');
+        const spark=`<svg class="mini-spark" viewBox="0 0 64 16" preserveAspectRatio="none"><polyline points="${pts}"/></svg>`;
+        ssLine=`<div class="ss-rate-live" data-live-key="${item.name}" data-live-base="${item.ss.rate}"><span>SS概率:</span><span class="rate-num ${tr.cls}">${rate}%</span><span class="rate-trend ${tr.cls}">${tr.icon} ${tr.text}</span></div>${spark}`;
       }
       return`<div class="s-item ${item.isSS?'is-ss':''}" data-tab="${currentSTab}" data-idx="${i}"><div class="s-name">${item.name}</div><div class="s-desc">${item.zone} · ${item.desc}</div>${ssLine}</div>`;
     }).join('');
@@ -796,6 +904,7 @@
   }
 
   let currentDetailTab=null,currentDetailIdx=null,historyOpen=false;
+  let historyMinutes=30;
   function showSDetail(tab,idx){
     currentDetailTab=tab;currentDetailIdx=idx;
     const item=sData[tab][idx];
@@ -823,7 +932,9 @@
       ssRateEl.textContent=`👑 这是SS怪！触发S怪时有额外概率出现，独立判定，纯看脸。`;
       return;
     }
-    if(!item.ss||!item.ss.rate){ssRateEl.style.display='none';return;}
+    if(!item.ss||!item.ss.rate){
+      ssRateEl.style.display='none';return;
+    }
     ssRateEl.style.display='block';
     const liveRate=computeLiveRate(item);
     const tr=DynamicRate.trend(liveRate,item.ss.rate);
@@ -834,12 +945,13 @@
   function renderHistory(item){
     const panel=document.getElementById('ssHistoryPanel');
     if(!item||item.isSS||!item.ss||!item.ss.rate){panel.innerHTML='';return;}
-    const data=DynamicRate.getHistory(item.ss.rate,item.name);
+    const data=DynamicRate.getHistory(item.ss.rate,item.name,historyMinutes);
     const rates=data.map(d=>d.rate);
     const max=Math.max(...rates),min=Math.min(...rates);
     const avg=Math.round(rates.reduce((a,b)=>a+b,0)/rates.length);
     const current=rates[rates.length-1];
     const range=Math.max(max-min,1);
+    const rangeLabel = historyMinutes>=60 ? `${historyMinutes/60} 小时` : `${historyMinutes} 分钟`;
     const bars=data.map((d,i)=>{
       const pct=10+((d.rate-min)/range)*90;
       const isNow=i===data.length-1;
@@ -848,9 +960,17 @@
     }).join('');
     const tr=DynamicRate.trend(current,item.ss.rate);
     panel.innerHTML=`
-      <div class="ss-history-head"><span class="hist-title">📈 ${item.name} · 过去 30 分钟 SS 概率走势</span><span>${tr.icon} ${tr.text}</span></div>
-      <div class="ss-history-chart">${bars}</div>
-      <div class="ss-history-axis"><span>30分钟前</span><span>15分钟前</span><span>现在</span></div>
+      <div class="ss-history-head">
+        <span class="hist-title">📈 ${item.name} · 过去 ${rangeLabel} SS 概率走势</span>
+        <div class="ss-range-btns">
+          <button data-range="30"  class="${historyMinutes===30?'active':''}">30分钟</button>
+          <button data-range="60"  class="${historyMinutes===60?'active':''}">1小时</button>
+          <button data-range="180" class="${historyMinutes===180?'active':''}">3小时</button>
+        </div>
+        <span>${tr.icon} ${tr.text}</span>
+      </div>
+      <div class="ss-history-chart" id="ssHistoryChart">${bars}</div>
+      <div class="ss-history-axis"><span>${rangeLabel}前</span><span>中间</span><span>现在</span></div>
       <div class="ss-history-stats">
         <span class="hi">最高 <strong>${max}%</strong></span>
         <span class="lo">最低 <strong>${min}%</strong></span>
@@ -858,7 +978,22 @@
         <span>当前 <strong>${current}%</strong></span>
         <span>基准 <strong>${item.ss.rate}%</strong></span>
       </div>
-      <div class="ss-history-note">※ 历史曲线由当前运势公式回算得出，同一分钟内数值稳定，仅供娱乐参考。</div>`;
+      <div class="ss-history-note">※ 按住图表左右拖动可查看更早的走势 · 时间越久柱子越密 · 仅供娱乐参考。</div>`;
+    panel.querySelectorAll('.ss-range-btns button').forEach(btn=>{
+      btn.addEventListener('click',e=>{
+        e.stopPropagation();
+        historyMinutes=parseInt(btn.dataset.range);
+        renderHistory(item);
+      });
+    });
+    const chart=panel.querySelector('#ssHistoryChart');
+    if(chart){
+      let down=false,sx=0,sl=0;
+      chart.addEventListener('mousedown',e=>{down=true;sx=e.clientX;sl=chart.scrollLeft;chart.style.cursor='grabbing';e.preventDefault();});
+      window.addEventListener('mousemove',e=>{if(down)chart.scrollLeft=sl-(e.clientX-sx);});
+      window.addEventListener('mouseup',()=>{down=false;chart.style.cursor='grab';});
+      chart.style.cursor='grab';
+    }
   }
   document.getElementById('ssHistoryToggle').addEventListener('click',()=>{
     const panel=document.getElementById('ssHistoryPanel');
@@ -1006,7 +1141,7 @@
     },80);
   });
 
-  // ========== 金碟刮刮乐（动态） ==========
+  // ========== 金碟刮刮乐（动态，3×3） ==========
   const scratchSymbols=[
     {id:'pig',emoji:'🐷',weight:22,tiers:[2,6,20]},
     {id:'coin',emoji:'💰',weight:16,tiers:[3,10,30]},
@@ -1062,11 +1197,11 @@
   }
   function revealCell(i){
     if(scratchLocked)return;
-    const cell=document.querySelector(`.scratch-cell[data-idx="${i}"]`);
+    const cell=document.querySelector(`#scratchCard .scratch-cell[data-idx="${i}"]`);
     if(!cell||cell.classList.contains('revealed'))return;
     cell.classList.add('revealed');
     cell.textContent=scratchCells[i].emoji;
-    const all=document.querySelectorAll('.scratch-cell.revealed');
+    const all=document.querySelectorAll('#scratchCard .scratch-cell.revealed');
     if(all.length===SCRATCH_CELLS)evaluateScratch();
   }
   function evaluateScratch(){
@@ -1090,8 +1225,8 @@
       scratchNet+=payout-SCRATCH_COST;
       result.className='scratch-result '+(best.mult>=10?'big-win':'win');
       result.textContent=`${best.sym.emoji}×${best.count} 中奖！获得 ${payout} 猪猪币（${best.mult}×）`;
-      document.querySelectorAll('.scratch-cell').forEach((cell,i)=>{
-        if(scratchCells[i].id===best.sym.id)cell.classList.add('win');
+      document.querySelectorAll('#scratchCard .scratch-cell').forEach((cell,i)=>{
+        if(scratchCells[i]&&scratchCells[i].id===best.sym.id)cell.classList.add('win');
       });
       if(best.mult>=20){
         document.getElementById('scratchCard').style.boxShadow='0 0 60px #fc0';
@@ -1135,7 +1270,7 @@
   });
   document.getElementById('scratchAllBtn').addEventListener('click',()=>{
     if(scratchLocked)return;
-    document.querySelectorAll('.scratch-cell:not(.revealed)').forEach((cell,i)=>{
+    document.querySelectorAll('#scratchCard .scratch-cell:not(.revealed)').forEach((cell,i)=>{
       setTimeout(()=>cell.click(),i*80);
     });
   });
@@ -1162,8 +1297,13 @@
     {id:'black',name:'黑毛猪',emoji:'🐗',color:'#aa8855',odds:3.0},
     {id:'pink',name:'粉红小猪',emoji:'🐷',color:'#ff99bb',odds:2.5},
     {id:'striped',name:'条纹猪',emoji:'🐖',color:'#ccbb88',odds:2.0},
-    {id:'gold',name:'金猪',emoji:'🐽',color:'#ffcc66',odds:4.5}
+    {id:'gold',name:'金猪',emoji:'🐽',color:'#ffcc66',odds:4.5},
+    {id:'boar',name:'野猪',emoji:'🐗',color:'#886644',odds:3.5},
+    {id:'piglet',name:'小香猪',emoji:'🐖',color:'#ffddaa',odds:2.8},
+    {id:'ninja',name:'忍者猪',emoji:'🥷',color:'#8888cc',odds:5.5},
+    {id:'king',name:'猪王',emoji:'👑',color:'#ffcc00',odds:6.0}
   ];
+  window.__racers = racers;
   let raceBank=1000,raceInProgress=false;
   function renderRaceTrack(){
     const track=document.getElementById('raceTrack');
@@ -1175,11 +1315,18 @@
         const id=lane.dataset.id;
         document.getElementById('racePick').value=id;
         const r=document.getElementById('raceResult');
-        r.textContent=`已选中 ${racers.find(r=>r.id===id).name}，点击开始赛跑吧！`;
+        r.textContent=`已选中 ${racers.find(x=>x.id===id).name}，点击开始赛跑吧！`;
         r.className='race-result';
       });
     });
+    const pick=document.getElementById('racePick');
+    if(pick){
+      const cur=pick.value;
+      pick.innerHTML=racers.map(r=>`<option value="${r.id}">${r.emoji} ${r.name}</option>`).join('');
+      if(racers.some(r=>r.id===cur))pick.value=cur;
+    }
   }
+  window.__rebuildRaceTrack = renderRaceTrack;
   renderRaceTrack();
   function updateRaceBank(){document.getElementById('raceBank').textContent=raceBank;}
   updateRaceBank();
@@ -1215,7 +1362,8 @@
         positions[r.id]+=speeds[r.id]*(0.8+Math.random()*0.5);
         if(positions[r.id]>96&&!finished)finished=r.id;
         positions[r.id]=Math.min(positions[r.id],96);
-        document.getElementById(`runner-${r.id}`).style.left=positions[r.id]+'%';
+        const el=document.getElementById(`runner-${r.id}`);
+        if(el)el.style.left=positions[r.id]+'%';
       });
       if(finished){
         clearInterval(raceInterval);
@@ -1232,7 +1380,11 @@
           rr.className='race-result lose';
         }
         setTimeout(()=>{
-          racers.forEach(r=>{positions[r.id]=4;document.getElementById(`runner-${r.id}`).style.left='4%';});
+          racers.forEach(r=>{
+            positions[r.id]=4;
+            const el=document.getElementById(`runner-${r.id}`);
+            if(el)el.style.left='4%';
+          });
           racers.forEach(r=>{
             const el=document.getElementById('odds-'+r.id);
             if(el){el.textContent='×?';el.style.color='#666';el.style.fontWeight='400';}
@@ -1287,7 +1439,8 @@
     const versions=[
       {key:'7.0 S怪',label:'7.0',color:'#ffb000',bless:'黄金的遗产灵气最旺，新地图怪物最活跃'},
       {key:'6.0 S怪',label:'6.0',color:'#88ccff',bless:'晓月之终途的星辰最亮，月球附近的怪最容易出'},
-      {key:'5.0 S怪',label:'5.0',color:'#cc88ff',bless:'暗影之逆焰的暗之力最强，老玩家运气加成'}
+      {key:'5.0 S怪',label:'5.0',color:'#cc88ff',bless:'暗影之逆焰的暗之力最强，老玩家运气加成'},
+      {key:'4.0 S怪',label:'4.0',color:'#88ff88',bless:'红莲之狂潮的火焰最旺，阿拉米格附近的怪最容易出'}
     ];
     const shuffled=[...versions].sort(()=>Math.random()-0.5);
     const best=shuffled[0],second=shuffled[1];
@@ -1300,7 +1453,7 @@
       const rate=computeLiveRate(item)??(item.ss?.rate??0);
       const rateClass=rate>=50?'high':'low';
       const rateText=rate>=50?'小猪觉得很有戏哦！':'小猪很遗憾哦，概率有点低……';
-      return`<div style="background:#111;border:1px solid #333;border-left:4px solid ${best.color};border-radius:12px;padding:.9rem 1rem;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;"><div style="font-weight:800;color:${best.color};font-size:1.05rem;">🐗 ${item.name}</div><div style="font-size:.72rem;color:#000;background:${best.color};padding:2px 10px;border-radius:10px;font-weight:700;">${best.label}</div></div><div style="font-size:.8rem;color:#bbb;margin-top:6px;"><span style="color:#888;">区域：</span>${item.zone}</div><div style="font-size:.8rem;color:#bbb;margin-top:2px;"><span style="color:#888;">触发：</span>${item.desc}</div><div class="ss-rate ${rateClass}" style="margin-top:8px;font-size:.82rem;padding:.5rem .8rem;">SS【${item.ss?.name||'—'}】概率约 ${rate}% — ${rateText}</div></div>`;
+      return`<div style="background:#111;border:1px solid #333;border-left:4px solid ${best.color};border-radius:12px;padding:.9rem 1rem;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;"><div style="font-weight:800;color:${best.color};font-size:1.05rem;">🐗 ${item.name}</div><div style="font-size:.72rem;color:#000;background:${best.color};padding:2px 10px;border-radius:10px;font-weight:700;">${best.label}</div></div><div style="font-size:.8rem;color:#bbb;margin-top:6px;"><span style="color:#888;">区域：</span>${item.zone}</div><div style="font-size:.8rem;color:#bbb;margin-top:2px;"><span style="color:#888;">触发：</span>${item.desc}</div><div class="ss-rate ${rateClass}" style="margin-top:8px;font-size:.82rem;padding:.5rem .8rem;">触发运势约 ${rate}% — ${rateText}</div></div>`;
     }).join('');
     const footer=`<div style="margin-top:.6rem;padding:.8rem 1rem;background:#1a1a1a;border-radius:10px;font-size:.82rem;color:#aaa;text-align:center;border:1px dashed #333;">💡 次选版本：<span style="color:${second.color};font-weight:800;">${second.label} S怪</span> — 如果上面的怪被别人蹲了，去这里碰碰运气也不错</div>`;
     listEl.innerHTML=banner+cards+footer;
@@ -1410,6 +1563,48 @@
     }
   });
 
+})();
+
+/* ============================================================
+   以下为新增独立脚本，与主逻辑互不干扰
+   ============================================================ */
+
+/* ---------- 1. 主题切换 ---------- */
+(function(){
+  const btn=document.createElement('button');
+  btn.id='themeToggle';
+  const saved=localStorage.getItem('piggy-theme');
+  const isLight=saved==='light';
+  if(isLight) document.body.classList.add('light-theme');
+  btn.textContent=isLight?'☀️ 亮':'🌙 暗';
+  btn.addEventListener('click',()=>{
+    document.body.classList.toggle('light-theme');
+    const nowLight=document.body.classList.contains('light-theme');
+    btn.textContent=nowLight?'☀️ 亮':'🌙 暗';
+    localStorage.setItem('piggy-theme', nowLight?'light':'dark');
+  });
+  const nav=document.querySelector('.nav-menu');
+  if(nav) nav.appendChild(btn);
+})();
+
+/* ---------- 2. 自定义猪 ---------- */
+(function(){
+  const btn=document.getElementById('raceCustomBtn');
+  if(!btn)return;
+  btn.addEventListener('click',()=>{
+    const name=prompt('给你的猪起个名字：','猪猪 '+Math.floor(Math.random()*99));
+    if(!name)return;
+    const emoji=prompt('表情（🐗 🐷 🐖 🐽 🥷 👑 等）：','🐷')||'🐷';
+    const id='custom-'+Date.now();
+    if(window.__racers){
+      window.__racers.push({id,name,emoji,color:'#cccccc',odds:4.0});
+    }
+    if(window.__rebuildRaceTrack) window.__rebuildRaceTrack();
+    const pick=document.getElementById('racePick');
+    if(pick) pick.value=id;
+    const r=document.getElementById('raceResult');
+    if(r){r.textContent=`新猪已加入：${emoji} ${name}（赔率 ×4.0），已自动选中！`;r.className='race-result';}
+  });
 })();
 </script>
 </body>
