@@ -63,7 +63,7 @@
   .s-tab.active{background:#ff9000;border-color:#ff9000;color:#000;font-weight:700}
   .s-tab:hover:not(.active){border-color:#ff9000}
   .s-tab.ss-tab.active{background:#c8f;border-color:#c8f}
-  .s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+  .s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
   .s-item{background:#222;border:1px solid #333;border-radius:12px;padding:.7rem .9rem;cursor:pointer;transition:all .2s}
   .s-item:hover{border-color:#ff9000;transform:translateY(-2px)}
   .s-item .s-name{font-weight:700;color:#c8f;font-size:.88rem}
@@ -71,6 +71,14 @@
   .s-item.is-ss{border-color:#5a4a1a;background:#2a2418}
   .s-item.is-ss:hover{border-color:#fc0}
   .s-item .s-desc{font-size:.72rem;color:#999;margin-top:3px;line-height:1.4}
+  /* S 怪卡片小进度条 */
+  .s-progress-mini{margin-top:6px}
+  .s-progress-mini-head{display:flex;justify-content:space-between;align-items:center;font-size:.66rem;color:#888;margin-bottom:3px}
+  .s-progress-mini-head .pct{font-weight:800;color:#ffb000}
+  .s-progress-mini-head .pct.cool{color:#f66}
+  .s-progress-mini-track{height:6px;background:#111;border-radius:3px;overflow:hidden;border:1px solid #2a2a2a}
+  .s-progress-mini-fill{height:100%;background:linear-gradient(90deg,#ff9000,#fc0);border-radius:2px;transition:width .4s linear;box-shadow:0 0 6px #ff900066}
+  .s-progress-mini-fill.cool{background:linear-gradient(90deg,#c33,#f66);box-shadow:0 0 6px #ff666666}
   .s-detail{margin-top:1rem;padding:1rem;background:#111;border-radius:14px;border:1px solid #333;display:none}
   .s-detail.active{display:block}
   .s-detail h4{color:#ffb000;font-size:1rem;margin-bottom:.5rem}
@@ -81,15 +89,24 @@
   .s-detail .s-tip{margin-top:.8rem;font-size:.8rem;color:#888;font-style:italic}
   .ss-try-wrap{margin-top:1rem;padding:1rem;background:#0d0d0d;border:1px dashed #444;border-radius:12px;display:none}
   .ss-try-wrap.active{display:block}
-  .ss-try-btn{background:linear-gradient(135deg,#ff9000,#fc0);border:none;border-bottom:5px solid #b36600;color:#000;font-weight:800;font-size:1rem;padding:.7rem 1.8rem;border-radius:40px;letter-spacing:1px;cursor:pointer;box-shadow:0 8px 20px -6px #00000099,0 0 0 2px #ffb000 inset;transition:all .1s;display:inline-block}
+  /* 详情大进度条 */
+  .try-progress-wrap{margin-bottom:1rem}
+  .try-progress-head{display:flex;justify-content:space-between;align-items:baseline;font-size:.8rem;color:#aaa;margin-bottom:6px;flex-wrap:wrap;gap:6px}
+  .try-progress-head .label{font-weight:700;color:#fff;font-size:.85rem}
+  .try-progress-head .pct-big{font-size:1.5rem;font-weight:900;color:#ffb000;letter-spacing:1px;line-height:1}
+  .try-progress-head .pct-big.cool{color:#f66}
+  .try-progress-head .cool-timer{font-size:.72rem;color:#f66;font-weight:700}
+  .try-progress-track{height:16px;background:#111;border-radius:8px;overflow:hidden;border:1px solid #333;position:relative}
+  .try-progress-fill{height:100%;background:linear-gradient(90deg,#8a4a00,#ff9000,#fc0);border-radius:7px;transition:width .5s linear;box-shadow:0 0 10px #ff900044;position:relative}
+  .try-progress-fill.cool{background:linear-gradient(90deg,#811,#c33,#f66);box-shadow:0 0 10px #ff666644}
+  .try-progress-fill::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.15),transparent);border-radius:7px 7px 0 0}
+  .try-progress-meta{display:flex;justify-content:space-between;font-size:.68rem;color:#666;margin-top:5px;flex-wrap:wrap;gap:6px}
+  .try-progress-meta .eta{color:#888}
+  .ss-try-btn{background:linear-gradient(135deg,#ff9000,#fc0);border:none;border-bottom:5px solid #b36600;color:#000;font-weight:800;font-size:1rem;padding:.7rem 1.8rem;border-radius:40px;letter-spacing:1px;cursor:pointer;box-shadow:0 8px 20px -6px #00000099,0 0 0 2px #ffb000 inset;transition:all .1s;display:inline-block;width:100%;text-align:center}
   .ss-try-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px -6px #00000099,0 0 0 2px #ffb000 inset}
   .ss-try-btn:active{transform:translateY(4px);border-bottom-width:2px}
-  .ss-try-info{margin-top:.7rem;font-size:.75rem;color:#999;line-height:1.7}
-  .ss-try-info .row{display:flex;justify-content:space-between;gap:10px;padding:2px 0}
-  .ss-try-info .row strong{color:#ffb000;font-weight:800}
-  .ss-try-info .row .good{color:#6cf06c}
-  .ss-try-info .row .warn{color:#f88}
-  .ss-try-info .row .fire{color:#fc0}
+  .ss-try-btn.cool{background:#444;border-bottom-color:#222;color:#888;cursor:not-allowed;box-shadow:inset 0 0 0 2px #333}
+  .ss-try-btn.cool:hover{transform:none;box-shadow:inset 0 0 0 2px #333}
   .ss-rate{font-weight:700;font-size:.95rem;margin-top:.6rem;padding:.6rem .9rem;border-radius:10px}
   .ss-rate.high{color:#6cf06c;background:#162a16;border-left:3px solid #2a5a2a}
   .ss-rate.low{color:#f88;background:#2a1616;border-left:3px solid #5a2a2a}
@@ -247,7 +264,6 @@
   .modal-footer{margin-top:1.4rem;display:flex;gap:10px;justify-content:center}
   .modal-footer button{background:#ff9000;border:none;border-bottom:4px solid #b36600;padding:.6rem 1.8rem;border-radius:40px;color:#000;font-weight:700;cursor:pointer;font-size:.95rem}
   .modal-footer button.secondary{background:#444;border-bottom-color:#222;color:#eee}
-  /* 触发小游戏弹窗 */
   .trigger-modal{max-width:560px;text-align:center}
   .trigger-body{padding:1rem 0}
   .trigger-body .big-emoji{font-size:5rem;display:block;margin-bottom:1rem;line-height:1}
@@ -255,10 +271,12 @@
   .trigger-body.success .trigger-title{color:#fc0;text-shadow:0 0 24px rgba(255,200,0,.6)}
   .trigger-body.partial .trigger-title{color:#6cf06c;text-shadow:0 0 20px rgba(100,240,100,.4)}
   .trigger-body.fail .trigger-title{color:#999}
+  .trigger-body.cool .trigger-title{color:#f66;text-shadow:0 0 20px rgba(255,102,102,.4)}
   .trigger-body .trigger-sub{font-size:.9rem;color:#bbb;margin-top:.7rem;line-height:1.8}
   .trigger-body .trigger-stat{margin-top:1.2rem;padding:.7rem 1rem;background:#111;border-radius:10px;font-size:.78rem;color:#888;text-align:left;line-height:1.75;border:1px solid #333}
   .trigger-body.success .trigger-stat{border-color:#5a4a1a}
   .trigger-body.partial .trigger-stat{border-color:#2a5a2a}
+  .trigger-body.cool .trigger-stat{border-color:#5a2a2a}
   .trigger-body .trigger-stat .row{display:flex;justify-content:space-between;gap:8px}
   .trigger-body .trigger-stat .row strong{color:#ffb000}
   .trigger-body .trigger-stat .row .ok{color:#6cf06c}
@@ -268,7 +286,7 @@
   @keyframes triggerSparkle{0%{transform:scale(.6);opacity:0}50%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
   .trigger-body.partial .big-emoji{animation:triggerSparkle .7s ease}
   @keyframes triggerDust{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
-  .trigger-body.fail .big-emoji{animation:triggerDust .8s ease}
+  .trigger-body.fail .big-emoji, .trigger-body.cool .big-emoji{animation:triggerDust .8s ease}
   .egg-record-item{display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid #222}
   .egg-record-item input[type="checkbox"]{accent-color:#ff9000;cursor:pointer}
   .egg-record-item .egg-time{flex:1;font-size:.75rem}
@@ -335,11 +353,12 @@
   body.light-theme .s-item .s-name{color:#7c3aed}
   body.light-theme .s-item.is-ss{background:#fef9e7;border-color:#e8d9a0}
   body.light-theme .s-item .s-desc{color:#666}
+  body.light-theme .s-progress-mini-track{background:#f0f0f0;border-color:#e0e0e0}
   body.light-theme .s-detail{background:#f5f5f5;border-color:#e0e0e0}
   body.light-theme .s-detail .s-meta span{background:#eaeaea}
   body.light-theme .s-detail .s-trigger{color:#333}
   body.light-theme .ss-try-wrap{background:#f5f5f5;border-color:#ddd}
-  body.light-theme .ss-try-info{color:#666}
+  body.light-theme .try-progress-track{background:#f0f0f0;border-color:#ddd}
   body.light-theme .ss-fortune-banner{background:#f5f5f5;border-color:#e0e0e0}
   body.light-theme .ss-fortune-banner.up{background:#ecfdf5;border-color:#6ee7b7;color:#059669}
   body.light-theme .ss-fortune-banner.down{background:#fef2f2;border-color:#fca5a5;color:#dc2626}
@@ -458,8 +477,20 @@
         <div class="s-trigger" id="sDetailTrigger"></div>
         <div class="ss-rate" id="ssRate" style="display:none;"></div>
         <div class="ss-try-wrap" id="ssTryWrap">
+          <div class="try-progress-wrap">
+            <div class="try-progress-head">
+              <span class="label">🎯 触发累积进度</span>
+              <span class="pct-big" id="tryProgressPct">0.0%</span>
+            </div>
+            <div class="try-progress-track">
+              <div class="try-progress-fill" id="tryProgressFill" style="width:0%"></div>
+            </div>
+            <div class="try-progress-meta">
+              <span>走满需要 1 小时 · 当前进度即触发概率</span>
+              <span class="eta" id="tryProgressEta"></span>
+            </div>
+          </div>
           <button class="ss-try-btn" id="ssTryBtn">🎯 试 试 触 发</button>
-          <div class="ss-try-info" id="ssTryInfo"></div>
         </div>
         <button class="ss-history-toggle" id="ssHistoryToggle" style="display:none;">📈 查看过去半小时 SS 概率</button>
         <div class="ss-history-panel" id="ssHistoryPanel"></div>
@@ -881,7 +912,7 @@
       if(v<-1.8)return{cls:'down',text:`今日SS运势 ${v.toFixed(1)}，小猪表示要谨慎……`};
       return{cls:'flat',text:`今日SS运势 ${v>=0?'+':''}${v.toFixed(1)}，中规中矩`};
     }
-    return{getRate,getRateAt,getHistory,trend,fortuneLabel,REFRESH_MS,HISTORY_MINUTES,getSessionFortune:()=>SESSION_FORTUNE};
+    return{getRate,getRateAt,getHistory,trend,fortuneLabel,REFRESH_MS,HISTORY_MINUTES};
   })();
 
   function getVersionBaseRate(versionKey){
@@ -926,101 +957,89 @@
     return DynamicRate.trend(rate, base);
   }
 
-  // ===================== 独立触发判定系统 =====================
-  // 与 SS 概率完全解耦，是一套自己的判定逻辑。
-  // 组成：基础 + 时间加成 + 个体特质 + 连败补偿 + 独立运势
-  const TriggerSystem = (() => {
-    const BASE_RATE = 15;              // 基础触发率
-    const MIN_RATE = 5;                 // 下限
-    const MAX_RATE = 75;                // 上限
-    const FAIL_BONUS_PER = 1.5;        // 每次失败累积补偿
-    const FAIL_BONUS_CAP = 30;         // 连败补偿上限
-    const failStreakMap = {};          // 按 S 怪名记录连败次数
+  // ===================== 触发进度条系统 =====================
+  // 完全独立于 SS 概率。每只 S 怪有自己的进度条：
+  // - 0% → 100% 需要现实时间 1 小时（约每分钟 +1.67%）
+  // - 进度条数值即触发概率
+  // - 触发成功后进度清零 + 进入 5 分钟冷却
+  // - 冷却期间不能触发
+  // - 使用 localStorage 持久化，刷新不丢进度
 
-    function hash(str){
-      let h = 2166136261;
-      for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619);}
-      return h>>>0;
+  const PROGRESS_DURATION = 60 * 60 * 1000;  // 1 小时
+  const COOLDOWN_DURATION = 5 * 60 * 1000;    // 5 分钟
+  const STORAGE_KEY = 'piggy-s-trigger-progress-v1';
+
+  // { [itemName]: { progressStart: ts, cooldownUntil: ts } }
+  let triggerState = {};
+  try {
+    triggerState = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  } catch(e) { triggerState = {}; }
+
+  function saveTriggerState(){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(triggerState)); } catch(e){}
+  }
+
+  function getItemTriggerState(item){
+    if(!item || !item.name) return { progressStart: Date.now(), cooldownUntil: 0 };
+    const key = item.name;
+    if(!triggerState[key]){
+      triggerState[key] = { progressStart: Date.now(), cooldownUntil: 0 };
+      saveTriggerState();
     }
+    return triggerState[key];
+  }
 
-    // 时间加成：深夜玩家少，加成多；早晨低谷
-    function getTimeBonus(){
-      const h = new Date().getHours();
-      if(h >= 0 && h < 6) return 6;
-      if(h >= 6 && h < 9) return -3;
-      if(h >= 9 && h < 18) return 0;
-      if(h >= 18 && h < 22) return 4;
-      return 2;
+  // 计算当前状态：进度 / 是否冷却 / 剩余冷却毫秒
+  function getTriggerProgress(item){
+    const s = getItemTriggerState(item);
+    const now = Date.now();
+    if(s.cooldownUntil > now){
+      return { pct: 0, cooling: true, cooldownRemain: s.cooldownUntil - now, progressStart: s.progressStart, cooldownUntil: s.cooldownUntil };
     }
-
-    // 个体特质：每只 S 怪天生难易不同（±4%）
-    function getTraitBonus(item){
-      if(!item || !item.name) return 0;
-      const h = hash(item.name + '::trait');
-      return ((h % 1000) / 1000 - 0.5) * 8;
+    // 冷却已结束：如果 progressStart 还是冷却前的时间，重置为冷却结束时刻
+    if(s.cooldownUntil > 0 && s.progressStart < s.cooldownUntil){
+      s.progressStart = s.cooldownUntil;
+      saveTriggerState();
     }
+    const elapsed = now - s.progressStart;
+    const pct = Math.min(100, elapsed / PROGRESS_DURATION * 100);
+    return { pct, cooling: false, cooldownRemain: 0, progressStart: s.progressStart, cooldownUntil: s.cooldownUntil };
+  }
 
-    // 连败补偿
-    function getFailBonus(item){
-      if(!item || !item.name) return 0;
-      const streak = failStreakMap[item.name] || 0;
-      return Math.min(FAIL_BONUS_CAP, streak * FAIL_BONUS_PER);
+  // 触发 roll：用当前进度作为概率
+  function rollTrigger(item){
+    const state = getItemTriggerState(item);
+    const now = Date.now();
+    if(state.cooldownUntil > now){
+      return { blocked: true, cooldownRemain: state.cooldownUntil - now };
     }
-
-    // 独立运势因子（复用当前会话运势的 60%，作为两套系统微弱联系）
-    function getFortuneBonus(){
-      try {
-        const f = DynamicRate.getSessionFortune();
-        return f * 0.6;
-      } catch(e){ return 0; }
+    const prog = getTriggerProgress(item);
+    const roll = Math.random() * 100;
+    const success = roll < prog.pct;
+    if(success){
+      // 进度清零 + 进入冷却
+      state.progressStart = now + COOLDOWN_DURATION;
+      state.cooldownUntil = now + COOLDOWN_DURATION;
+      saveTriggerState();
     }
+    // 未触发则不重置进度，继续累积
+    return {
+      blocked: false,
+      rate: prog.pct,
+      roll: Math.round(roll * 10) / 10,
+      success
+    };
+  }
 
-    function getRate(item){
-      const base = BASE_RATE;
-      const timeB = getTimeBonus();
-      const traitB = getTraitBonus(item);
-      const failB = getFailBonus(item);
-      const fortuneB = getFortuneBonus();
-      const total = base + timeB + traitB + failB + fortuneB;
-      return Math.max(MIN_RATE, Math.min(MAX_RATE, Math.round(total)));
-    }
-
-    function getBreakdown(item){
-      return {
-        base: BASE_RATE,
-        timeBonus: getTimeBonus(),
-        traitBonus: getTraitBonus(item),
-        failBonus: getFailBonus(item),
-        fortuneBonus: getFortuneBonus(),
-        streak: failStreakMap[item.name] || 0,
-        rate: getRate(item)
-      };
-    }
-
-    function roll(item){
-      const rate = getRate(item);
-      const r = Math.random() * 100;
-      const success = r < rate;
-      if(success){
-        failStreakMap[item.name] = 0;
-      }else{
-        failStreakMap[item.name] = (failStreakMap[item.name] || 0) + 1;
-      }
-      return {
-        rate,
-        roll: Math.round(r * 10) / 10,
-        success,
-        streak: failStreakMap[item.name] || 0
-      };
-    }
-
-    function resetStreak(item){
-      if(item && item.name) failStreakMap[item.name] = 0;
-    }
-
-    return { getRate, getBreakdown, roll, resetStreak };
-  })();
-  // ==========================================================
+  function formatCooldown(ms){
+    const total = Math.ceil(ms / 1000);
+    if(total <= 0) return '0秒';
+    const m = Math.floor(total / 60);
+    const s = total % 60;
+    if(m > 0) return `${m}分${s}秒`;
+    return `${s}秒`;
+  }
+  // ========================================================
 
   function renderFortuneBanner(){
     const f=DynamicRate.fortuneLabel();
@@ -1068,6 +1087,7 @@
     const grid=document.getElementById('sGrid');
     grid.innerHTML=sData[currentSTab].map((item,i)=>{
       let ssLine;
+      let progressLine='';
       if(item.isSS){
         ssLine=`<div style="font-size:.7rem;color:#fc0;margin-top:4px;">👑 SS怪 · 全境概率触发</div>`;
       }else if(!item.ss||!item.ss.rate){
@@ -1079,8 +1099,22 @@
         const pts = hist.map((d,j)=>`${(j/(hist.length-1)*64).toFixed(1)},${(16-(d.rate/100)*16).toFixed(1)}`).join(' ');
         const spark=`<svg class="mini-spark" viewBox="0 0 64 16" preserveAspectRatio="none"><polyline points="${pts}"/></svg>`;
         ssLine=`<div class="ss-rate-live" data-live-version="${currentSTab}" data-live-name="${item.name}"><span>SS概率:</span><span class="rate-num ${tr.cls}">${rate}%</span><span class="rate-trend ${tr.cls}">${tr.icon} ${tr.text}</span></div>${spark}`;
+
+        // 迷你进度条
+        const prog = getTriggerProgress(item);
+        if(prog.cooling){
+          progressLine = `<div class="s-progress-mini" data-prog-name="${item.name}">
+            <div class="s-progress-mini-head"><span>🎯 冷却中</span><span class="pct cool">${formatCooldown(prog.cooldownRemain)}</span></div>
+            <div class="s-progress-mini-track"><div class="s-progress-mini-fill cool" style="width:100%"></div></div>
+          </div>`;
+        }else{
+          progressLine = `<div class="s-progress-mini" data-prog-name="${item.name}">
+            <div class="s-progress-mini-head"><span>🎯 触发进度</span><span class="pct">${prog.pct.toFixed(1)}%</span></div>
+            <div class="s-progress-mini-track"><div class="s-progress-mini-fill" style="width:${prog.pct.toFixed(1)}%"></div></div>
+          </div>`;
+        }
       }
-      return`<div class="s-item ${item.isSS?'is-ss':''}" data-tab="${currentSTab}" data-idx="${i}"><div class="s-name">${item.name}</div><div class="s-desc">${item.zone} · ${item.desc}</div>${ssLine}</div>`;
+      return`<div class="s-item ${item.isSS?'is-ss':''}" data-tab="${currentSTab}" data-idx="${i}"><div class="s-name">${item.name}</div><div class="s-desc">${item.zone} · ${item.desc}</div>${ssLine}${progressLine}</div>`;
     }).join('');
     grid.querySelectorAll('.s-item').forEach(el=>{
       el.addEventListener('click',()=>showSDetail(el.dataset.tab,parseInt(el.dataset.idx)));
@@ -1111,29 +1145,45 @@
       histBtn.textContent='📈 查看过去半小时 SS 概率';
       histPanel.classList.remove('active');historyOpen=false;
       tryWrap.classList.add('active');
-      renderTryInfo(item);
+      renderTryProgress(item);
     }
-    document.getElementById('sDetailTip').textContent='※ SS概率为该 S 怪自身基准（70%）与版本加权（30%）混合；触发判定为独立系统，与 SS 概率无关，每 10 秒刷新。';
+    document.getElementById('sDetailTip').textContent='※ SS概率基于自身基准 70% + 版本加权 30%；触发进度条走满需 1 小时，进度值即触发概率，触发成功后冷却 5 分钟。';
   }
 
-  function renderTryInfo(item){
-    const infoEl = document.getElementById('ssTryInfo');
-    if(!infoEl) return;
-    const b = TriggerSystem.getBreakdown(item);
-    const streakTip = b.streak > 0
-      ? `<span class="fire">🔥 连败 ${b.streak} 次 · +${Math.round(b.failBonus)}%</span>`
-      : (b.failBonus > 0 ? `<span class="fire">🔥 +${Math.round(b.failBonus)}%</span>` : `<span style="opacity:.6;">无连败补偿</span>`);
-    const timeTip = b.timeBonus > 0
-      ? `<span class="good">+${b.timeBonus}%</span>`
-      : (b.timeBonus < 0 ? `<span class="warn">${b.timeBonus}%</span>` : `<span style="opacity:.6;">0%</span>`);
-    const traitTip = b.traitBonus >= 0
-      ? `<span class="good">+${b.traitBonus.toFixed(1)}%</span>`
-      : `<span class="warn">${b.traitBonus.toFixed(1)}%</span>`;
-    infoEl.innerHTML = `
-      <div class="row"><span>综合触发率</span><strong>${b.rate}%</strong></div>
-      <div class="row"><span>基础 / 时间 / 特质</span><span>${b.base}% · ${timeTip} · ${traitTip}</span></div>
-      <div class="row"><span>连败补偿</span>${streakTip}</div>
-    `;
+  function renderTryProgress(item){
+    const prog = getTriggerProgress(item);
+    const pctEl = document.getElementById('tryProgressPct');
+    const fillEl = document.getElementById('tryProgressFill');
+    const btn = document.getElementById('ssTryBtn');
+    const eta = document.getElementById('tryProgressEta');
+    if(!pctEl || !fillEl || !btn) return;
+
+    if(prog.cooling){
+      pctEl.classList.add('cool');
+      pctEl.textContent = '冷却中';
+      fillEl.classList.add('cool');
+      fillEl.style.width = '100%';
+      btn.classList.add('cool');
+      btn.disabled = true;
+      btn.textContent = `❄ 冷却中 · ${formatCooldown(prog.cooldownRemain)}`;
+      if(eta) eta.textContent = `剩余 ${formatCooldown(prog.cooldownRemain)}`;
+    }else{
+      pctEl.classList.remove('cool');
+      pctEl.textContent = prog.pct.toFixed(1) + '%';
+      fillEl.classList.remove('cool');
+      fillEl.style.width = prog.pct.toFixed(1) + '%';
+      btn.classList.remove('cool');
+      btn.disabled = false;
+      btn.textContent = '🎯 试 试 触 发';
+      if(eta){
+        if(prog.pct >= 100){
+          eta.textContent = '已满 100% · 必定触发';
+        }else{
+          const remainMs = PROGRESS_DURATION * (1 - prog.pct / 100);
+          eta.textContent = `约 ${formatCooldown(remainMs)} 后满进度`;
+        }
+      }
+    }
   }
 
   function renderDetailRate(item, versionKey){
@@ -1256,7 +1306,7 @@
       const item=sData[currentDetailTab] && sData[currentDetailTab][currentDetailIdx];
       if(item && !item.isSS && item.ss && item.ss.rate){
         renderDetailRate(item, currentDetailTab);
-        renderTryInfo(item);
+        renderTryProgress(item);
         if(historyOpen)renderHistory(item, currentDetailTab);
       }
     }
@@ -1279,11 +1329,50 @@
     trEl.className='rate-trend '+tr.cls;
     trEl.textContent=tr.icon+' '+tr.text;
   }
+
+  // 每 500ms 刷新进度条显示（比 SS 概率 10 秒刷新更频繁，让进度条看起来在走）
+  function tickProgressBars(){
+    // 网格上的迷你进度条
+    document.querySelectorAll('.s-progress-mini').forEach(el=>{
+      const name = el.dataset.progName;
+      if(!name) return;
+      const item = (sData[currentSTab] || []).find(x => x.name === name);
+      if(!item) return;
+      const prog = getTriggerProgress(item);
+      const pctEl = el.querySelector('.pct');
+      const fillEl = el.querySelector('.s-progress-mini-fill');
+      const headEl = el.querySelector('.s-progress-mini-head span:first-child');
+      if(!pctEl || !fillEl) return;
+      if(prog.cooling){
+        pctEl.className = 'pct cool';
+        pctEl.textContent = formatCooldown(prog.cooldownRemain);
+        fillEl.classList.add('cool');
+        fillEl.style.width = '100%';
+        if(headEl) headEl.textContent = '🎯 冷却中';
+      }else{
+        pctEl.className = 'pct';
+        pctEl.textContent = prog.pct.toFixed(1) + '%';
+        fillEl.classList.remove('cool');
+        fillEl.style.width = prog.pct.toFixed(1) + '%';
+        if(headEl) headEl.textContent = '🎯 触发进度';
+      }
+    });
+    // 详情里的进度条
+    const detailEl = document.getElementById('sDetail');
+    if(detailEl.classList.contains('active') && currentDetailTab && currentDetailIdx != null){
+      const item = sData[currentDetailTab] && sData[currentDetailTab][currentDetailIdx];
+      if(item && !item.isSS && item.ss && item.ss.rate){
+        renderTryProgress(item);
+      }
+    }
+  }
+  setInterval(tickProgressBars, 500);
+
   renderSTabs();renderSGrid();
   renderFortuneBanner();
   setInterval(tickLiveRates,DynamicRate.REFRESH_MS);
 
-  // ============ 触发小游戏（独立两段式判定） ============
+  // ============ 触发小游戏（进度条判定 + SS 二段判定） ============
   const triggerOverlay = document.getElementById('triggerOverlay');
   const triggerBody = document.getElementById('triggerBody');
 
@@ -1306,10 +1395,15 @@
     '小猪的鼻子抖了抖……好像什么也没有'
   ];
   const FAIL_SUBS = [
-    '别灰心，S 怪还在沉睡，也许下一只就是它',
+    '别灰心，进度条还在继续累积',
     '运气这种东西，多试几次总会来的',
     '再摸两把猪猪，运势会好起来的',
     '猪猪神谕：今日不宜强求，明日再战'
+  ];
+  const COOL_TITLES = [
+    '这只 S 怪正在冷却中……',
+    '刚触发过的 S 怪需要休息一下',
+    '冷却时间还没结束，再等一会吧'
   ];
 
   function tryTrigger(){
@@ -1317,14 +1411,19 @@
     const item = sData[currentDetailTab][currentDetailIdx];
     if(!item || item.isSS || !item.ss || !item.ss.rate) return;
 
-    // 第一段：独立系统判定 S 怪是否触发成功
-    const tResult = TriggerSystem.roll(item);
+    // 独立进度条判定
+    const tResult = rollTrigger(item);
+    if(tResult.blocked){
+      // 冷却中
+      showTriggerResult(item, null, { blocked: true, cooldownRemain: tResult.cooldownRemain });
+      return;
+    }
     if(!tResult.success){
-      // S 怪都没触发
+      // 未触发
       showTriggerResult(item, null, tResult);
       return;
     }
-    // 第二段：S 怪触发了，用 SS 概率判定是否出 SS 怪
+    // 触发了 → SS 二段判定
     const ssRate = computeIndividualRate(item, currentDetailTab);
     const ssRoll = Math.round(Math.random() * 1000) / 10;
     const ssSuccess = ssRoll < ssRate;
@@ -1332,43 +1431,50 @@
   }
 
   function showTriggerResult(item, ssResult, tResult){
-    const b = TriggerSystem.getBreakdown(item);
     let bodyClass, bigEmoji, title, sub, statRows;
 
-    if(!tResult.success){
-      // 三层：S 怪未触发
+    if(tResult.blocked){
+      // 冷却中
+      bodyClass = 'cool';
+      bigEmoji = '❄️';
+      title = COOL_TITLES[Math.floor(Math.random() * COOL_TITLES.length)];
+      sub = `<strong style="color:#f66;">【${item.name}】</strong> 正在冷却中……<br>冷却结束后进度条会从 0% 重新累积。`;
+      statRows = `
+        <div class="row"><span>冷却剩余</span><strong>${formatCooldown(tResult.cooldownRemain)}</strong></div>
+        <div class="row"><span>冷却总长</span><span>5 分钟</span></div>`;
+    }else if(!tResult.success){
+      // 未触发
       const title_ = FAIL_TITLES[Math.floor(Math.random() * FAIL_TITLES.length)];
       const sub_ = FAIL_SUBS[Math.floor(Math.random() * FAIL_SUBS.length)];
       bodyClass = 'fail';
       bigEmoji = '🌫️';
       title = title_;
-      sub = `<strong style="color:#bbb;">【${item.name}】</strong> 还在沉睡……<br>${sub_}`;
+      sub = `<strong style="color:#bbb;">【${item.name}】</strong> 还没触发……<br>${sub_}`;
       statRows = `
-        <div class="row"><span>S怪触发判定</span><span><strong>${tResult.rate}%</strong> · 实际 ${tResult.roll} · <span class="no">❌ 未触发</span></span></div>
-        <div class="row"><span>连败补偿</span><span class="ok">+${Math.round(b.failBonus + 1.5)}% / 上限 +${30}%</span></div>
-        <div class="row"><span>下一只触发率</span><strong>${Math.min(75, b.rate + 2)}%</strong></div>`;
+        <div class="row"><span>触发判定</span><span>概率 <strong>${tResult.rate.toFixed(1)}%</strong> · 实际 ${tResult.roll} · <span class="no">❌ 未触发</span></span></div>
+        <div class="row"><span>进度保留</span><span class="ok">✓ 累积不清零</span></div>`;
     }else if(ssResult && ssResult.success){
-      // 三层：S 怪触发 + SS 怪出现
+      // 触发 + SS 出现
       const title_ = SUCCESS_TITLES[Math.floor(Math.random() * SUCCESS_TITLES.length)];
       bodyClass = 'success';
       bigEmoji = '🐗✨';
       title = title_;
       sub = `<strong style="color:#fc0;">【${item.name}】</strong> 成功触发了特殊恶名精英！<br>出 SS【${item.ss.name}】正在附近巡逻……<br>快叫上队友集合吧！猪猪为你加油！`;
       statRows = `
-        <div class="row"><span>S怪触发判定</span><span><strong>${tResult.rate}%</strong> · 实际 ${tResult.roll} · <span class="ok">✅ 触发成功</span></span></div>
-        <div class="row"><span>SS 判定</span><span><strong>${ssResult.rate}%</strong> · 实际 ${ssResult.roll} · <span class="ok">✅ 出现 SS</span></span></div>
-        <div class="row"><span>连败补偿</span><span class="ok">已清零</span></div>`;
+        <div class="row"><span>触发判定</span><span>概率 <strong>${tResult.rate.toFixed(1)}%</strong> · 实际 ${tResult.roll} · <span class="ok">✅ 触发成功</span></span></div>
+        <div class="row"><span>SS 判定</span><span>概率 <strong>${ssResult.rate}%</strong> · 实际 ${ssResult.roll} · <span class="ok">✅ 出现 SS</span></span></div>
+        <div class="row"><span>状态</span><span class="no">❄ 进入 5 分钟冷却 · 进度清零</span></div>`;
     }else{
-      // 三层：S 怪触发但没出 SS
+      // 触发但没出 SS
       const title_ = PARTIAL_TITLES[Math.floor(Math.random() * PARTIAL_TITLES.length)];
       bodyClass = 'partial';
       bigEmoji = '🐗';
       title = title_;
       sub = `<strong style="color:#6cf06c;">【${item.name}】</strong> 触发了！<br>但 SS 怪没有出现，只有普通的精英怪在游荡……<br>下次再试试，说不定就是它！`;
       statRows = `
-        <div class="row"><span>S怪触发判定</span><span><strong>${tResult.rate}%</strong> · 实际 ${tResult.roll} · <span class="ok">✅ 触发成功</span></span></div>
-        <div class="row"><span>SS 判定</span><span><strong>${ssResult.rate}%</strong> · 实际 ${ssResult.roll} · <span class="no">❌ 未出 SS</span></span></div>
-        <div class="row"><span>连败补偿</span><span class="ok">已清零</span></div>`;
+        <div class="row"><span>触发判定</span><span>概率 <strong>${tResult.rate.toFixed(1)}%</strong> · 实际 ${tResult.roll} · <span class="ok">✅ 触发成功</span></span></div>
+        <div class="row"><span>SS 判定</span><span>概率 <strong>${ssResult.rate}%</strong> · 实际 ${ssResult.roll} · <span class="no">❌ 未出 SS</span></span></div>
+        <div class="row"><span>状态</span><span class="no">❄ 进入 5 分钟冷却 · 进度清零</span></div>`;
     }
 
     triggerBody.className = 'trigger-body ' + bodyClass;
@@ -1378,7 +1484,10 @@
       <div class="trigger-sub">${sub}</div>
       <div class="trigger-stat">${statRows}</div>`;
     triggerOverlay.classList.add('active');
-    renderTryInfo(item);
+
+    // 刷新界面（进度条 / 网格）
+    renderTryProgress(item);
+    renderSGrid();
   }
 
   document.getElementById('ssTryBtn').addEventListener('click', tryTrigger);
