@@ -357,13 +357,13 @@
     <div class="nav-wrapper">
       <div class="logo"><a href="#"><span class="logo-text">猪猪</span><span class="logo-hub">运势</span><span class="logo-emoji">🐖</span></a></div>
       <nav class="nav-menu">
-        <a href="#oracle" class="nav-link active">运势转盘</a>
+        <a href="#oracle" class="nav-link active">猪猪运势轮盘</a>
         <a href="#lottery" class="nav-link">猪猪盲盒</a>
-        <a href="#s-panel" class="nav-link">S怪触发</a>
+        <a href="#s-panel" class="nav-link">猪猪模拟S怪触发</a>
         <a href="#scratch" class="nav-link">金碟刮刮乐</a>
         <a href="#race" class="nav-link">猪猪赛跑</a>
-        <a href="#tarot" class="nav-link">猪猪塔罗</a>
-        <a href="#tools" class="nav-link">辅助工具</a>
+        <a href="#tarot" class="nav-link">猪猪塔罗牌</a>
+        <a href="#tools" class="nav-link">其他猪猪辅助工具</a>
       </nav>
     </div>
   </div>
@@ -373,13 +373,13 @@
   <div class="container">
 
     <div class="card" id="oracle">
-      <div class="section-title">🐗 艾欧泽亚猪猪转盘 · 全玩法运势</div>
+      <div class="section-title">🐗艾欧泽亚猪猪转盘</div>
       <div class="wheel-section">
         <div class="wheel-container">
           <div class="pointer" id="pointer"></div>
           <div class="wheel" id="wheel"><div class="wheel-center">🐽</div></div>
         </div>
-        <button class="spin-btn" id="spinBtn">🐖 转 动 猪 运 🐖</button>
+        <button class="spin-btn" id="spinBtn">🐖 请 转 动 猪 运 🐖</button>
         <div class="spin-time-row">
           <span>⏱ 旋转时长</span>
           <input type="number" id="spinDuration" value="0.9" min="0.3" max="5" step="0.1">
@@ -389,7 +389,7 @@
     </div>
 
     <div class="lottery-panel" id="lottery">
-      <div class="section-title">🎁 猪猪盲盒抽奖机 · 玄学摸猪</div>
+      <div class="section-title">🎁 猪猪盲盒抽奖机-玄学摸猪</div>
       <div class="lottery-machine">
         <div class="lottery-display" id="lotteryDisplay">🎁</div>
         <button class="spin-btn" id="lotteryBtn" style="font-size:1.2rem;padding:.6rem 2.2rem;">🎰 摸 一 下 猪 猪</button>
@@ -408,7 +408,7 @@
     </div>
 
     <div class="s-panel" id="s-panel">
-      <div class="section-title">🐗 S怪触发指南 · 猪猪狩猎版</div>
+      <div class="section-title">🐗 S怪触发指南-猪猪狩猎版</div>
       <div class="ss-fortune-banner" id="ssFortuneBanner"></div>
       <div class="s-tabs" id="sTabs"></div>
       <div class="s-grid" id="sGrid"></div>
@@ -421,14 +421,14 @@
         <div class="ss-try-wrap" id="ssTryWrap">
           <div class="try-progress-wrap">
             <div class="try-progress-head">
-              <span class="label">🎯 触发进度（1 小时走满）</span>
+              <span class="label">触发进度</span>
               <span class="pct-big" id="tryProgressPct">0.0%</span>
             </div>
             <div class="try-progress-track">
               <div class="try-progress-fill" id="tryProgressFill" style="width:0%"></div>
             </div>
             <div class="try-progress-meta">
-              <span>每只 S 怪独立进度 · 触发成功后清零并冷却 20 分钟</span>
+              <span>每只 S 怪独立进度</span>
               <span class="eta" id="tryProgressEta"></span>
             </div>
           </div>
@@ -442,7 +442,7 @@
       </div>
       <div class="stats-panel" id="statsPanel">
         <h4 style="display:flex;align-items:center;">
-          📊 触 S 统计公示 · 猪猪战绩
+          📊 触 S 统计公示
           <button id="statsToggle" style="margin-left:auto;background:#252525;border:1px solid #444;color:#ffb000;padding:.2rem .8rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-weight:600;">📉 收起</button>
         </h4>
         <div class="stat-summary" id="statSummary"></div>
@@ -515,7 +515,7 @@
     </div>
 
     <div class="tarot-panel" id="tarot">
-      <div class="section-title">🔮 猪猪塔罗牌 · 今日命运指引</div>
+      <div class="section-title">🔮 猪猪塔罗牌-今日猪运指引</div>
       <div class="tarot-machine">
         <div class="tarot-deck" id="tarotDeck">🐷</div>
         <div class="tarot-card" id="tarotCard">
@@ -531,7 +531,7 @@
 
     <section class="tool-section" id="tools">
       <div class="mini-tool">
-        <h3>🥚 龙蛋计数器</h3>
+        <h3>🥚难道你也是神鸟的触发？这是龙蛋计数器</h3>
         <div class="tool-content" style="margin-bottom:6px;">
           <select class="server-select" id="eggServerSelect"><option value="">选择服务器</option></select>
           <button id="eggAddBtn">+1 龙蛋</button>
@@ -548,7 +548,7 @@
         <div class="small-note">可勾选后批量删除，或点击单条删除</div>
       </div>
       <div class="mini-tool">
-        <h3>🌾 农场统寄助手</h3>
+        <h3>🌾统寄助手</h3>
         <div class="tool-content" style="margin-bottom:6px;">
           <select class="server-select" id="farmServerSelect"><option value="">选择服务器</option></select>
           <select class="server-select" id="farmSNameSelect" style="min-width:150px;"><option value="">选择S怪</option></select>
@@ -798,17 +798,17 @@
       {name:'顾尼图',zone:'黑风海',desc:'天使，开饭了！',ssName:'得到宽恕的叛乱'}
     ],
     '4.0 S怪':[
-      {name:'优昙婆罗花',zone:'基拉巴尼亚边区',desc:'在边区持续讨伐魔物后触发'},
-      {name:'爬骨怪龙',zone:'基拉巴尼亚山区',desc:'在山区持续击杀魔物后触发'},
-      {name:'盐和光',zone:'基拉巴尼亚湖区',desc:'在湖区盐田附近站岗触发'},
-      {name:'巨大鳐',zone:'红玉海',desc:'在红玉海沿岸区域持续站岗触发'},
-      {name:'伽马',zone:'延夏',desc:'在延夏与魔物交战后触发'},
+      {name:'优昙婆罗花',zone:'基拉巴尼亚边区',desc:'在边区请180只莱西到家里坐坐吧'},
+      {name:'爬骨怪龙',zone:'基拉巴尼亚山区',desc:'我的陆行鸟会召唤S？'},
+      {name:'盐和光',zone:'基拉巴尼亚湖区',desc:'乱丢垃圾'},
+      {name:'巨大鳐',zone:'红玉海',desc:'在红玉海沿岸区域持续战斗触发'},
+      {name:'伽马',zone:'延夏',desc:'站岗！'},
       {name:'兀鲁忽乃朝鲁',zone:'太阳神草原',desc:'在太阳神草原击杀游牧魔物后触发'}
     ],
     'SS怪（概率触发）':[
-      {name:'水晶化身之王',zone:'7.0 全境',desc:'7.0 S怪触发时额外概率出现的隐藏Boss，纯看脸',isSS:true},
-      {name:'克尔',zone:'6.0 全境',desc:'6.0 S怪触发时额外概率出现的隐藏Boss，纯看脸',isSS:true},
-      {name:'得到宽恕的叛乱',zone:'5.0 全境',desc:'5.0 S怪触发时额外概率出现的隐藏Boss，纯看脸',isSS:true}
+      {name:'水晶化身之王',zone:'7.0 全境',desc:'7.0 S怪触发时额外概率出现的隐藏Boss',isSS:true},
+      {name:'克尔',zone:'6.0 全境',desc:'6.0 S怪触发时额外概率出现的隐藏Boss',isSS:true},
+      {name:'得到宽恕的叛乱',zone:'5.0 全境',desc:'5.0 S怪触发时额外概率出现的隐藏Boss',isSS:true}
     ]
   };
 
